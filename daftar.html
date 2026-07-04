@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran FIRANET</title>
+
+     <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
+
+    <!-- FontAwesome untuk Icon Centang -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts untuk Font Modern -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    
+    <style>
+        /* --- CSS Reset & Base Styling --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* --- Section Form & CTA --- */
+        .cta-form-section {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), 
+                url('poto.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            padding: 80px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cta-container {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start; /* MENGUBAH POSISI DARI center KE start AGAR SEJAJAR DI ATAS */
+        }
+
+        /* --- Sisi Kiri: Informasi --- */
+        .cta-info {
+            margin-top: 20px; /* MENAMBAHKAN SEDIKIT JARAK AGAR TIDAK TEMPEL KE ATAS */
+        }
+
+        .cta-info h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #000000, #000000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cta-info p {
+            color: #000000;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            color: #000000;
+        }
+
+        .feature-item i {
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 8px;
+            border-radius: 50%;
+            margin-right: 12px;
+            font-size: 0.9rem;
+        }
+
+        /* --- Sisi Kanan: Kartu Form --- */
+        .form-card {
+            background: #ffffff;
+            color: #1e293b;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #0f172a;
+        }
+
+        .form-card > p {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #334155;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            background-color: #f8fafc;
+            color: #1e293b;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563eb;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            background-color: #2563eb;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+            margin-bottom: 12px;
+        }
+
+        .btn-submit:hover {
+            background-color: #1d4ed8;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.98);
+        }
+
+        /* --- Tombol Kembali ke Beranda --- */
+        .btn-back {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            background-color: transparent;
+            color: #64748b;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            border-color: #94a3b8;
+        }
+
+        .btn-back:active {
+            transform: scale(0.98);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #ffffff;
+            color: var(--text-muted);
+            padding: 10px 30px;
+            text-align: center;
+            font-size: 10px;
+            border-top: 1px solid #868686;
+        }
+
+        /* --- Responsive Web Design (Mobile Friendly) --- */
+        @media (max-width: 768px) {
+            .cta-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cta-info {
+                text-align: center;
+                margin-top: 0; /* Reset margin di mobile agar seimbang */
+            }
+
+            .cta-info h2 {
+                font-size: 2rem;
+            }
+
+            .feature-item {
+                justify-content: center;
+            }
+
+            .form-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Section Form & CTA -->
+<div class="cta-form-section" id="daftar-form">
+    <div class="cta-container">
+        <!-- Informasi Kiri -->
+        <div class="cta-info">
+            <h2>Mulai Berlangganan Hari Ini</h2>
+            <p>Rasakan pengalaman internet premium tanpa batasan FUP atau kuota. Isilah formulir pendaftaran di samping, dan tim kami akan segera memproses lokasi Anda.</p>
+            
+            <div class="features-list">
+                <div class="feature-item">
+                    <i class="fa-solid fa-check"></i> Infrastruktur 100% Fiber Optic
+                </div>
+                <div class="feature-item">
+                    <i class="fa-solid fa-check"></i> Tanpa Batasan Kuota (True Unlimited)
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulir Kanan -->
+        <div class="form-card">
+            <h3>Formulir Berlangganan</h3>
+            <p>Lengkapi data untuk pengecekan jaringan rumah Anda.</p>
+            
+            <form onsubmit="kirimKeWhatsapp(event)">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" placeholder="Contoh: Budi Santoso" required>
+                </div>
+                <div class="form-group">
+                    <label for="hp">Nomor WhatsApp</label>
+                    <input type="tel" id="hp" placeholder="Contoh: 08123456789" required>
+                </div>
+                <div class="form-group">
+                    <label for="paket">Pilihan Paket Internet</label>
+                    <select id="paket" required>
+                        <option value="Silver 50 Mbps - Rp175rb">Silver (50 Mbps) - Rp175.000/Bulan</option>
+                        <option value="Gold 75 Mbps - Rp185rb" selected>Gold (75 Mbps) - Rp185.000/Bulan (Populer)</option>
+                        <option value="Platinum 100 Mbps - Rp215rb">Platinum (100 Mbps) - Rp215.000/Bulan</option>
+                        <option value="Business 200 Mbps - Rp450rb">Business (200 Mbps) - Rp450.000/Bulan</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="alamat">Alamat Pemasangan Lengkap</label>
+                    <input type="text" id="alamat" placeholder="Nama jalan, RT/RW, nomor rumah" required>
+                </div>
+                
+                <!-- Tombol Kirim -->
+                <button type="submit" class="btn-submit">Kirim Formulir Pendaftaran</button>
+                
+                <!-- Tombol Kembali ke Beranda -->
+                <a href="index.html" class="btn-back">
+                    <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
+</footer>
+
+<!-- Script WhatsApp -->
+<script>
+    function kirimKeWhatsapp(event) {
+        event.preventDefault();
+
+        const nama = document.getElementById('nama').value;
+        const hp = document.getElementById('hp').value;
+        const paket = document.getElementById('paket').value;
+        const alamat = document.getElementById('alamat').value;
+
+        const nomorAdmin = "6281290473752"; 
+        
+        const pesan = `Halo Firanet, saya ingin mendaftar pasang baru. Berikut data diri saya:
+
+• *Nama:* ${nama}
+• *No. WA:* ${hp}
+• *Paket Pilihan:* ${paket}
+• *Alamat Pasang:* ${alamat}
+
+Mohon segera diproses untuk pengecekan jaringan di lokasi saya, terima kasih.`;
+
+        const urlWhatsApp = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
+        window.open(urlWhatsApp, '_blank');
+    }
+</script>
+
+</body>
+</html>

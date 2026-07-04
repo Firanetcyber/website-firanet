@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - FIRANET</title>
+
+     <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Base & Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        :root {
+            --primary-blue: #004fc4;
+            --light-blue: #eef4ff;
+            --orange: #ff6600;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #ffffff;
+            --bg-gray: #f8fafc;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            /* Menyesuaikan opacity agar background poto.png tidak menutupi keterbacaan teks */
+            background-image: 
+                linear-gradient(rgba(248, 250, 252, 0.92), rgba(248, 250, 252, 0.92)), 
+                url('poto.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+
+            min-height: 100vh;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px; 
+            max-width: 1300px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 5px; /* Sedikit diperlebar agar jarak gambar & teks lebih ideal */
+            font-size: 20px; /* Dinaikkan dari 26px ke 34px agar tinggi teks sejajar dengan tinggi logo 40px */
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            line-height: 1; /* Menghilangkan spasi kosong vertikal bawaan teks */
+        }
+        .nav-logo i {
+            font-style: normal;
+        }
+
+        /* Memastikan gambar logo berukuran proporsional */
+        .logo-img {
+            height: 20px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Memperbaiki susunan teks logo tanpa miring */
+        .logo-text {
+            display: flex;
+            align-items: center;
+            font-style: normal;
+        }
+
+        .nav-logo span {
+            color: var(--orange);
+        }
+
+        .nav-logo .fira-text {
+            color: var(--primary-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 70px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px; 
+            transition: color 0.2s ease;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .nav-links a.active {
+            color: var(--orange);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--orange);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .nav-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 12px 26px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            background: #003da1;
+            transform: translateY(-1px);
+        }
+
+        /* About Header Section */
+        .about-header {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 60px 40px 20px;
+            text-align: center;
+        }
+
+        .about-header h1 {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+        }
+
+        .about-header p {
+            font-size: 16px;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Content Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 60px;
+            align-items: center;
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 40px 60px;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 520px;
+            border-radius: 20px;
+            filter: drop-shadow(0 20px 30px rgba(0,0,0,0.08));
+        }
+
+        .about-text h2 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0f172a;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Vision & Mission Section */
+        .vision-mission {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 40px 40px 80px;
+        }
+
+        .vm-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .vm-card {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #e2e8f0;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .vm-card h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .vm-card h3 i {
+            color: var(--orange);
+        }
+
+        .vm-card p, .vm-card ul {
+            font-size: 15px;
+            color: var(--text-muted);
+        }
+
+        .vm-card ul {
+            list-style-type: none;
+        }
+
+        .vm-card ul li {
+            margin-bottom: 12px;
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .vm-card ul li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--orange);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 10px;
+            padding: 10px 30px;
+            background: rgba(248, 250, 252, 0.9);
+            border-top: 1px solid #e2e8f0;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .about-content { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .about-image { order: 2; display: flex; justify-content: center; }
+            .about-text { order: 1; }
+            .about-text p { text-align: center; }
+            .vm-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 640px) {
+            .navbar { padding: 16px; }
+            .nav-links { display: none; }
+            .about-header h1 { font-size: 32px; }
+            .vm-card { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <a href="index.html" class="nav-logo">      
+        <img src="wifi.png" alt="Firanet Logo" class="logo-img">
+       <i><span>fira</span>net</i>
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="tentang.html" class="active">Tentang Kami</a></li>
+        <li><a href="layanan.html">Layanan</a></li>
+        <li><a href="paket.html">Paket</a></li>
+        <li><a href="coverage.html">Coverage</a></li>
+        <li><a href="kontak.html">Kontak</a></li>
+    </ul>
+    <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
+</nav>
+
+<!-- About Header -->
+<header class="about-header">
+    <h1>Tentang FIRANET</h1>
+    <p>Mengenal lebih dekat penyedia layanan internet premium tanpa batas kuota yang andal dan tepercaya.</p>
+</header>
+
+<!-- About Content -->
+<section class="about-content">
+    <div class="about-image">
+        <img src="potoaja.jpeg" alt="Tentang FIRANET" style="width:100%; object-fit: cover; object-position: center; height: 350px;">
+    </div>
+    <div class="about-text">
+        <h2>Menghubungkan Anda ke Dunia Tanpa Batas</h2>
+        <p>FIRANET hadir sebagai solusi kebutuhan internet modern yang menuntut kecepatan, stabilitas, dan keterjangkauan. Berlokasi strategis di Green Citayam City, Jawa Barat, kami berkomitmen untuk memberikan layanan internet premium khusus untuk mendukung aktivitas digital Anda sehari-hari.</p>
+        <p>Baik untuk kebutuhan belajar dari rumah, *work from home*, *streaming* hiburan keluarga hingga *online gaming*, jaringan infrastruktur FIRANET dirancang menggunakan teknologi terkini demi memastikan kualitas koneksi tetap andal di segala kondisi (Uptime 24/7).</p>
+    </div>
+</section>
+
+<!-- Vision & Mission -->
+<section class="vision-mission">
+    <div class="vm-grid">
+        <!-- Visi -->
+        <div class="vm-card">
+            <h3><i class="fa-solid fa-eye"></i> Visi Kami</h3>
+            <p>Menjadi penyedia layanan internet (*Internet Service Provider*) lokal terdepan yang andal, berkualitas tinggi, serta mampu menginspirasi dan menggerakkan pertumbuhan digital masyarakat tanpa batas kuota.</p>
+        </div>
+        <!-- Misi -->
+        <div class="vm-card">
+            <h3><i class="fa-solid fa-bullseye"></i> Misi Kami</h3>
+            <ul>
+                <li>Menyediakan koneksi internet yang cepat, stabil, dan aman bagi seluruh pelanggan.</li>
+                <li>Menawarkan pilihan paket internet berkualitas premium dengan harga yang ramah di kantong.</li>
+                <li>Memberikan layanan dukungan teknis (*customer support*) yang sigap, ramah, dan solutif.</li>
+                <li>Terus memperluas jangkauan (*coverage*) infrastruktur jaringan demi mendukung digitalisasi wilayah.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
+</footer>
+
+</body>
+</html>

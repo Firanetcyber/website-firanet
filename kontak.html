@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak Kami - FIRANET</title>
+
+     <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Base & Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        :root {
+            --primary-blue: #004fc4;
+            --primary-hover: #003da1;
+            --light-blue: #eef4ff;
+            --orange: #ff6600;
+            --orange-hover: #e05a00;
+            --text-dark: #0f172a;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --bg-gray: #f8fafc;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-image: 
+                linear-gradient(rgba(248, 250, 252, 0.9), rgba(248, 250, 252, 0.9)), 
+                url('poto.png'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+
+            min-height: 100vh;
+            color: var(--text-dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar */
+        .navbar-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+            width: 100%;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px; 
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 20px; 
+            font-weight: 800;
+            color: var(--primary-blue);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo-img {
+            height: 20px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-logo span {
+            color: var(--primary-blue);
+            text-transform: lowercase;
+        }
+
+        .nav-logo .net-text {
+            color: var(--orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 70px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px; 
+            transition: all 0.2s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .nav-links a.active {
+            color: var(--orange);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--orange);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .nav-btn {
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0, 79, 196, 0.15);
+        }
+
+        .nav-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px rgba(0, 79, 196, 0.2);
+        }
+
+        /* Main Content Container */
+        .content-wrapper {
+            flex: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .page-header h1 {
+            font-size: 40px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .page-header p {
+            color: var(--text-muted);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Contact Layout grid */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        /* Left Side: Contact Cards */
+        .contact-info-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid var(--border-color);
+            padding: 24px;
+            border-radius: 16px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            backdrop-filter: blur(5px);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-icon {
+            width: 52px;
+            height: 52px;
+            background: var(--light-blue);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-icon i {
+            font-size: 22px;
+            color: var(--primary-blue);
+        }
+
+        .info-details h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .info-details p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .info-details a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .info-details a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        /* Right Side: Contact Form Card */
+        .contact-form-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-form-card h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 13px;
+            color: #475569;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group textarea {
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 12px 16px;
+            border-radius: 10px;
+            color: var(--text-dark);
+            font-size: 14.5px;
+            outline: none;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 130px;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary-blue);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(0, 79, 196, 0.1);
+        }
+
+        .btn-send {
+            width: 100%;
+            background: var(--orange);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(255, 102, 0, 0.15);
+        }
+
+        .btn-send:hover {
+            background: var(--orange-hover);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(255, 102, 0, 0.25);
+        }
+
+        .btn-send i {
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 10px;
+            padding: 10px 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+            margin-top: auto;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .contact-grid { grid-template-columns: 1fr; gap: 35px; }
+            .content-wrapper { padding: 40px 24px; }
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 16px; }
+            .nav-links { display: none; } /* Menyembunyikan menu pada perangkat mobile */
+            .page-header h1 { font-size: 34px; }
+            .contact-form-card { padding: 30px 20px; }
+        }
+        
+        @media (max-width: 480px) {
+            .info-card { padding: 20px; flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar Container untuk Efek Backdrop Blur Penuh Semenanjung Layar -->
+<div class="navbar-container">
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">      
+            <img src="wifi.png" alt="Firanet Logo" class="logo-img">
+            <span>fira<span class="net-text">net</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang Kami</a></li>
+            <li><a href="layanan.html">Layanan</a></li>
+            <li><a href="paket.html">Paket</a></li>
+            <li><a href="coverage.html">Coverage</a></li>
+            <li><a href="kontak.html" class="active">Kontak</a></li>
+        </ul>
+        <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
+    </nav>
+</div>
+
+<!-- Main Content -->
+<div class="content-wrapper">
+    <div class="page-header">
+        <h1>Hubungi Kami</h1>
+        <p>Punya pertanyaan seputar layanan paket, keluhan teknis, atau cek jangkauan wilayah? Tim Firanet siap melayani Anda sepenuh hati.</p>
+    </div>
+
+    <div class="contact-grid">
+        <!-- Info Cards Side -->
+        <div class="contact-info-cards">
+            <!-- Card Alamat -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="info-details">
+                    <h3>Kantor Kami</h3>
+                    <p>Green Citayam City, Jawa Barat, Indonesia.</p>
+                </div>
+            </div>
+
+            <!-- Card WhatsApp -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <div class="info-details">
+                    <h3>WhatsApp</h3>
+                    <p><a href="https://wa.me/6281290473752" target="_blank">+62 812-9047-3752</a></p>
+                     <p><a href="https://wa.me/6285891718224" target="_blank">+62 858-9171-8224</a></p>
+                </div>
+            </div>
+
+            <!-- Card Jam Kerja -->
+            <div class="info-card">
+                <div class="info-icon">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+                <div class="info-details">
+                    <h3>Jam Operasional</h3>
+                    <p>Senin - Minggu: 08.00 - 21.00 WIB</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form Side -->
+        <div class="contact-form-card">
+            <h2>Kirim Pesan</h2>
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Alamat Email</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email aktif" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subjek / Perihal</label>
+                    <input type="text" id="subject" name="subject" placeholder="Contoh: Pemasangan Baru / Keluhan Jaringan" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Pesan Anda</label>
+                    <textarea id="message" name="message" placeholder="Tuliskan pesan atau detail pertanyaan Anda di sini..." required></textarea>
+                </div>
+                <button type="submit" class="btn-send">
+                    <i class="fa-solid fa-paper-plane"></i> Kirim Pesan
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
+</footer>
+
+</body>
+</html>
