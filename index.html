@@ -317,13 +317,53 @@
             .hero-text .brand-title { justify-content: center; }
         }
 
+        /* PERBAIKAN UTAMA UNTUK TAMPILAN HP (Tweak khusus layar kecil) */
         @media (max-width: 640px) {
-            .navbar { padding: 16px; }
-            .nav-links { display: none; }
-            .hero-text .brand-title { font-size: 52px; letter-spacing: -2px; }
-            .hero-text .brand-title .hero-logo-img { height: 50px; } 
-            .hero-text h1 { font-size: 32px; }
-            .features-grid { grid-template-columns: 1fr; }
+            .navbar { 
+                padding: 12px 16px; 
+            }
+            .nav-links { 
+                display: none; 
+            }
+            .nav-btn {
+                padding: 8px 16px;
+                font-size: 13px;
+            }
+            .hero {
+                padding: 20px 16px 60px;
+                gap: 24px;
+            }
+            .hero-text .brand-title { 
+                font-size: 36px; /* Mengecilkan teks brand FIRANET */
+                letter-spacing: -1px; 
+                gap: 8px;
+                margin-bottom: 5px;
+            }
+            .hero-text .brand-title .hero-logo-img { 
+                height: 34px; /* Mengecilkan logo wifi di atas judul */
+            } 
+            .hero-text h1 { 
+                font-size: 26px; /* Mengecilkan headline utama agar tidak memakan tempat */
+                margin-bottom: 14px;
+            }
+            .hero-text p {
+                font-size: 14px;
+                margin-bottom: 24px;
+            }
+            .features-section {
+                padding: 40px 16px;
+            }
+            .features-section h2 {
+                font-size: 24px;
+                margin-bottom: 24px;
+            }
+            .features-grid { 
+                grid-template-columns: 1fr; 
+                gap: 16px;
+            }
+            .feature-card {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
@@ -350,7 +390,7 @@
     <section class="hero">
         <div class="hero-text">
             <div class="brand-title">
-                <img src="wifi.png" class="hero-logo-img">
+                <img src="wifi.png" class="hero-logo-img" alt="Logo">
                 <i><span class="fira-text">fira</span><span class="net-text">net</span></i>
             </div>
             <h1>Internet Cepat,<br>Hidup Tanpa Batas</h1>
