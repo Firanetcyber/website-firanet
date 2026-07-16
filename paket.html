@@ -7,12 +7,12 @@
 
     <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
     
-    <!-- Google Fonts & Font Awesome Icons -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        /* Base & Reset Styles */
+        
         * {
             margin: 0;
             padding: 0;
@@ -55,7 +55,7 @@
             -webkit-text-size-adjust: 100%;
         }
 
-        /* Navbar (Konsisten 100% dengan Tentang Kami) */
+        
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -78,7 +78,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            position: relative; /* Acuan posisi drop-down menu mobile */
+            position: relative; 
         }
 
         .nav-logo {
@@ -165,7 +165,7 @@
             box-shadow: 0 4px 12px rgba(0, 79, 196, 0.2);
         }
 
-        /* Menu Toggle Button (Tersembunyi di Desktop) */
+        
         .menu-toggle {
             display: none;
             background: none;
@@ -177,7 +177,7 @@
             z-index: 101;
         }
 
-        /* Header Section */
+        
         .page-header {
             text-align: center;
             padding: 40px 20px 10px;
@@ -198,7 +198,7 @@
             color: var(--text-muted);
         }
 
-        /* Pricing Cards Section */
+        
         .pricing-section {
             max-width: 1400px;
             width: 100%;
@@ -353,7 +353,7 @@
             background: var(--orange-hover);
         }
 
-        /* Petunjuk Geser / Swipe Indicator */
+        
         .scroll-hint {
             display: flex;
             justify-content: center;
@@ -375,7 +375,7 @@
             100% { transform: scale(1); opacity: 0.5; }
         }
 
-        /* Footer */
+        
         footer {
             text-align: center;
             color: var(--text-muted);
@@ -387,12 +387,12 @@
             margin-top: auto;
         }
 
-        /* Responsive Breakpoints (Optimasi HP & Tablet) */
+        
         @media (max-width: 1024px) {
             .pricing-section { padding: 10px 5px 40px; }
         }
 
-        /* TAMPILAN MOBILE DROPDOWN (Konsisten dengan Halaman Lain) */
+        
         @media (max-width: 768px) {
             body {
                 background-attachment: scroll;
@@ -402,7 +402,7 @@
                 display: block; 
             }
 
-            /* Sistem Drop-down Menu */
+
             .nav-links {
                 display: none; 
                 position: absolute;
@@ -452,10 +452,10 @@
         }
 
         @media (max-width: 480px) {
-            .nav-btn { display: none; } /* Menyembunyikan tombol kontak di navbar HP kecil */
+            .nav-btn { display: none; } 
         }
 
-        /* Tampilan Desktop Stabil & Bisa Digeser */
+
         @media (min-width: 1200px) {
             .pricing-grid {
                 justify-content: flex-start; 
@@ -500,7 +500,7 @@
     </div>
 </nav>
 
-<!-- Header -->
+
 <div class="page-header">
     <h1>Pilih Paket Internetmu</h1>
     <p>Koneksi internet rumah 100% Fiber Optic, True Unlimited tanpa batasan FUP, dan stabil untuk semua perangkat keluarga Anda.</p>
@@ -511,7 +511,7 @@
     <div class="pricing-container">
         <div class="pricing-grid">
             
-            <!-- Paket 0: Bronze (20 Mbps) -->
+           
             <div class="price-card">
                 <div class="card-header">
                     <h3>Bronze</h3>
@@ -529,7 +529,6 @@
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Bronze 20 Mbps - Rp166.500')">Pilih Paket</a>
             </div>
 
-            <!-- Paket Baru: Iron (30 Mbps) -->
             <div class="price-card">
                 <div class="card-header">
                     <h3>Iron</h3>
@@ -547,7 +546,7 @@
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Iron 30 Mbps - Rp169.000')">Pilih Paket</a>
             </div>
             
-            <!-- Card 1: Silver (50 Mbps) -->
+           
             <div class="price-card">
                 <div class="card-header">
                     <h3>Silver</h3>
@@ -565,7 +564,7 @@
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Silver 50 Mbps - Rp175.000')">Pilih Paket</a>
             </div>
 
-            <!-- Card 2: Gold (75 Mbps - Popular) -->
+            
             <div class="price-card popular">
                 <div class="popular-badge">Populer</div>
                 <div class="card-header">
@@ -584,7 +583,7 @@
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Gold 75 Mbps - Rp185.000')">Pilih Paket</a>
             </div>
 
-            <!-- Card 3: Platinum (100 Mbps) -->
+         
             <div class="price-card">
                 <div class="card-header">
                     <h3>Platinum</h3>
@@ -602,7 +601,7 @@
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Platinum 100 Mbps - Rp215.000')">Pilih Paket</a>
             </div>
 
-            <!-- Card 3.5: Diamond (150 Mbps) -->
+       
             <div class="price-card">
                 <div class="card-header">
                     <h3>Diamond</h3>
@@ -620,7 +619,7 @@
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Diamond 150 Mbps - Rp285.000')">Pilih Paket</a>
             </div>
 
-            <!-- Card 4: Business (200 Mbps) -->
+          
             <div class="price-card">
                 <div class="card-header">
                     <h3>Business</h3>
@@ -651,9 +650,9 @@
     <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
 </footer>
 
-<!-- Script Menu Dropdown Mobile -->
+
 <script>
-    // Menyimpan data paket pilihan untuk form pendaftaran
+ 
     function setPaketPilihan(namaPaket) {
         localStorage.setItem('paketTerpilih', namaPaket);
     }

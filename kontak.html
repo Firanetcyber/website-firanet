@@ -78,7 +78,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            position: relative; /* Acuan posisi drop-down menu mobile */
+            position: relative; 
         }
 
         .nav-logo {
@@ -165,7 +165,7 @@
             box-shadow: 0 4px 12px rgba(0, 79, 196, 0.2);
         }
 
-        /* Menu Toggle Button (Tersembunyi di Desktop) */
+        /* Menu Toggle Button */
         .menu-toggle {
             display: none;
             background: none;
@@ -382,7 +382,6 @@
             }
         }
 
-        /* TAMPILAN MOBILE DROPDOWN (Konsisten dengan Halaman Lain) */
         @media (max-width: 768px) {
             body {
                 background-attachment: scroll;
@@ -392,7 +391,6 @@
                 display: block; 
             }
 
-            /* Sistem Drop-down Menu */
             .nav-links {
                 display: none; 
                 position: absolute;
@@ -438,7 +436,6 @@
             .logo-img { height: 20px; }
             .nav-btn { padding: 8px 16px; font-size: 13px; }
 
-            /* Penyesuaian Konten di HP */
             .content-wrapper {
                 padding: 20px 16px 40px;
             }
@@ -458,7 +455,7 @@
         }
         
         @media (max-width: 480px) {
-            .nav-btn { display: none; } /* Menyembunyikan tombol kontak di navbar HP kecil */
+            .nav-btn { display: none; } 
             
             .info-card { 
                 padding: 20px; 
@@ -552,7 +549,7 @@
         <!-- Form Side -->
         <div class="contact-form-card">
             <h2>Kirim Pesan</h2>
-            <form action="#" method="POST">
+            <form id="contactForm">
                 <div class="form-group">
                     <label for="name">Nama Lengkap</label>
                     <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
@@ -582,8 +579,9 @@
     <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
 </footer>
 
-<!-- Script Menu Dropdown Mobile -->
+<!-- JavaScript -->
 <script>
+    // 1. Script Menu Dropdown Mobile
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
     const toggleIcon = menuToggle.querySelector('i');
@@ -607,6 +605,34 @@
             toggleIcon.classList.remove('fa-xmark');
             toggleIcon.classList.add('fa-bars');
         }
+    });
+
+    // 2. Script Integrasi Formulir ke WhatsApp Otomatis
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Menghentikan halaman agar tidak reload
+
+        // Ambil isi input dari form
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+
+        // Tentukan nomor WhatsApp penerima (admin Firanet)
+        const phoneNumber = "6281290473752"; 
+
+        // Susun struktur chat WhatsApp
+        // Susun struktur chat WhatsApp (Titik dua disejajarkan dengan spasi manual)
+            const textMessage = `Halo Firanet, saya ingin mengirim pesan dari website:\n\n` +
+                                `• Nama      : ${name}\n` +
+                                `• Email     : ${email}\n` +
+                                `• Perihal   : ${subject}\n\n` +
+                                `• Pesan     :\n${message}`;
+
+        // Format teks agar aman di dalam link URL browser
+        const encodedText = encodeURIComponent(textMessage);
+
+        // Buka chat WhatsApp di tab baru
+        window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
     });
 </script>
 
