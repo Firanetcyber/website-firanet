@@ -35,7 +35,6 @@
         }
 
         body {
-            /* Ditambahkan fallback warna solid jika gambar poto.png gagal dimuat */
             background-color: var(--bg-gray);
             background-image: 
                 linear-gradient(rgba(248, 250, 252, 0.92), rgba(248, 250, 252, 0.92)), 
@@ -51,6 +50,7 @@
             line-height: 1.6;
             display: flex;
             flex-direction: column;
+            -webkit-text-size-adjust: 100%;
         }
 
         /* Navbar */
@@ -75,51 +75,57 @@
             align-items: center;
             width: 100%;
             max-width: 1200px;
-            margin: 5px auto;
+            margin: 0 auto;
+            position: relative; /* Acuan posisi drop-down menu mobile */
         }
 
-         .nav-logo {
+        .nav-logo {
             display: flex;
             align-items: center;
-            gap: 5px; /* Sedikit diperlebar agar jarak gambar & teks lebih ideal */
-            font-size: 20px; /* Dinaikkan dari 26px ke 34px agar tinggi teks sejajar dengan tinggi logo 40px */
+            gap: 6px; 
+            font-size: 24px; 
             font-weight: 800;
-            color: var(--primary-blue);
             text-decoration: none;
             letter-spacing: -0.5px;
-            line-height: 1; /* Menghilangkan spasi kosong vertikal bawaan teks */
+            line-height: 1; 
         }
-        .nav-logo i {
-            font-style: normal;
-        }
-        
-
-        .nav-logo span { color: var(--orange); }
-        
         
         .logo-img {
-            height: 18px; /* Mengatur tinggi gambar logo agar proporsional */
+            height: 24px; 
             width: auto;
             object-fit: contain;
+            display: block;
+        }
+
+        .nav-logo span {
+            color: var(--orange);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo .net-text {
+            color: var(--primary-blue);
         }
 
         .nav-links {
             display: flex;
-            gap: 70px;
+            gap: 30px; 
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
             color: var(--text-muted);
             text-decoration: none;
             font-weight: 600;
-            font-size: 16px; 
+            font-size: 15px; 
             transition: color 0.2s ease;
             position: relative;
-            padding: 8px 0;
+            padding-bottom: 8px;
         }
 
         .nav-links a.active { color: var(--orange); }
+        
         .nav-links a.active::after {
             content: '';
             position: absolute;
@@ -133,21 +139,40 @@
 
         .nav-links a:hover { color: var(--orange); }
 
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .nav-btn {
             background: var(--primary-blue);
             color: white;
-            padding: 12px 26px;
+            padding: 10px 20px; 
             border-radius: 30px;
-            font-weight: 800;
+            font-weight: 700;
             font-size: 14px;
             text-decoration: none;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
         .nav-btn:hover {
             background: #003da1;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 79, 196, 0.2);
+        }
+
+        /* Menu Toggle Button (Tersembunyi di Desktop) */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 5px;
+            z-index: 101;
         }
 
         /* Coverage Main Section */
@@ -155,25 +180,25 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 50px 20px 80px;
-            flex: 1; /* Memastikan konten mengisi sisa ruang agar footer tetap di bawah */
+            padding: 40px 20px 60px;
+            flex: 1;
         }
 
         .page-header {
             text-align: center;
-            margin-bottom: 45px;
+            margin-bottom: 40px;
         }
 
         .page-header h1 {
             font-size: 36px;
             font-weight: 800;
-            color: var(--primary-black);
+            color: var(--text-dark);
             margin-bottom: 12px;
             letter-spacing: -0.5px;
         }
 
         .page-header p {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-muted);
             max-width: 600px;
             margin: 0 auto;
@@ -278,7 +303,7 @@
 
         .location-badge {
             background: var(--light-blue);
-            color: var(--text-dark);
+            color: var(--primary-blue);
             padding: 6px 14px;
             border-radius: 20px;
             font-weight: 700;
@@ -314,7 +339,8 @@
         .area-list li i {
             color: #10b981; 
             font-size: 16px;
-            margin-top: 3px; /* Menyelaraskan ikon centang jika teks baris baru melorot ke bawah */
+            margin-top: 4px; 
+            flex-shrink: 0;  
         }
 
         /* Note Callout */
@@ -332,31 +358,98 @@
         }
         
         .coverage-note i {
-            margin-top: 2px;
+            margin-top: 3px;
+            flex-shrink: 0;
         }
 
         /* Footer */
         footer {
             text-align: center;
             color: var(--text-muted);
-            font-size: 10px;
-            padding: 10px 30px;
-            background: rgba(255, 255, 255, 0.9);
+            font-size: 11px;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.95);
             border-top: 1px solid #e2e8f0;
+            margin-top: auto;
             width: 100%;
         }
 
         /* Responsive Breakpoints */
         @media (max-width: 1024px) {
-            .coverage-grid { grid-template-columns: 1fr; gap: 30px; }
+            .coverage-grid { grid-template-columns: 1fr; gap: 24px; }
+            .page-header h1 { font-size: 32px; }
         }
 
+        /* TAMPILAN MOBILE DROPDOWN (Sinkron dengan Halaman Layanan) */
         @media (max-width: 768px) {
-            .navbar { padding: 15px 20px; }
-            .nav-links, .nav-btn { display: none; } /* Sembunyikan menu di mobile (sebaiknya nanti ditambah hamburger menu) */
-            .page-header h1 { font-size: 30px; }
-            .coverage-container { padding: 30px 16px 60px; }
-            .check-card, .area-card { padding: 24px 20px; }
+            body {
+                background-attachment: scroll;
+            }
+
+            .menu-toggle { 
+                display: block; 
+            }
+
+            /* Sistem Drop-down Menu */
+            .nav-links {
+                display: none; 
+                position: absolute;
+                top: 100%; 
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+                flex-direction: column;
+                align-items: stretch;
+                padding: 15px 10px;
+                gap: 5px;
+                border-top: 1px solid #f1f5f9;
+                border-radius: 0 0 12px 12px;
+            }
+
+            .nav-links.active {
+                display: flex; 
+            }
+
+            .nav-links a {
+                font-size: 16px;
+                display: block;
+                width: 100%;
+                padding: 12px 15px;
+                border-radius: 8px;
+            }
+
+            .nav-links a.active {
+                background-color: #fff7ed;
+            }
+
+            .nav-links a.active::after {
+                display: none; 
+            }
+
+            .nav-links a:hover {
+                background-color: #f8fafc;
+            }
+
+            .navbar { padding: 10px 16px; }
+            .nav-logo { font-size: 20px; }
+            .logo-img { height: 20px; }
+            .nav-btn { padding: 8px 16px; font-size: 13px; }
+            
+            /* Penyesuaian Konten Grid & Teks di HP */
+            .page-header { margin-bottom: 25px; }
+            .page-header h1 { font-size: 26px; letter-spacing: -0.5px; }
+            .page-header p { font-size: 14px; }
+            .coverage-container { padding: 20px 16px 40px; }
+            .check-card, .area-card { padding: 24px 20px; border-radius: 14px; }
+            .check-card h2, .area-card h2 { font-size: 19px; }
+            .check-card p { font-size: 13.5px; margin-bottom: 20px; }
+            .area-list li { font-size: 14px; }
+        }
+
+        @media (max-width: 480px) {
+            .page-header h1 { font-size: 22px; }
+            .nav-btn { display: none; } /* Menyembunyikan tombol kontak di navbar HP kecil agar space aman */
         }
     </style>
 </head>
@@ -367,10 +460,10 @@
     <div class="nav-container">
         <a href="index.html" class="nav-logo">      
             <img src="wifi.png" alt="Firanet Logo" class="logo-img">
-            <i><span>fira</span>net</i>
+            <span>fira<span class="net-text">net</span></span>
         </a>
 
-        <ul class="nav-links">
+        <ul class="nav-links" id="navLinks">
             <li><a href="index.html">Beranda</a></li>
             <li><a href="tentang.html">Tentang Kami</a></li>
             <li><a href="layanan.html">Layanan</a></li>
@@ -378,7 +471,13 @@
             <li><a href="coverage.html" class="active">Coverage</a></li>
             <li><a href="kontak.html">Kontak</a></li>
         </ul>
-        <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
+        
+        <div class="nav-actions">
+            <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </div>
 </nav>
 
@@ -444,7 +543,7 @@
 
             <div style="margin-top: 40px; text-align: center;">
                 <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 15px;">Butuh respons cepat atau ingin langsung bertanya pada tim marketing kami?</p>
-                <a href="https://wa.me/6281290473752" target="_blank" style="color: var(--primary-blue); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;">
+                <a href="https://wa.me/6281290473752" target="_blank" style="color: var(--primary-blue); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 8px;">
                     <i class="fa-brands fa-whatsapp" style="font-size: 18px; color: #25d366;"></i> Hubungi Via WhatsApp 
                 </a>
             </div>
@@ -456,6 +555,34 @@
 <footer>
     <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
 </footer>
+
+<!-- Script Menu Dropdown Mobile -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const toggleIcon = menuToggle.querySelector('i');
+
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        navLinks.classList.toggle('active');
+        
+        if(navLinks.classList.contains('active')) {
+            toggleIcon.classList.remove('fa-bars');
+            toggleIcon.classList.add('fa-xmark');
+        } else {
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+        }
+    });
+</script>
 
 </body>
 </html>
