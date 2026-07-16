@@ -294,7 +294,7 @@
                 </div>
                 <div class="form-group">
                     <label for="alamat">Alamat Pemasangan Lengkap</label>
-                    <input type="text" id="alamat" placeholder="Nama jalan, RT/RW, nomor rumah" required>
+                    <input type="text" id="perumahan" placeholder="Blok dan Nomor Rumah" required>
                 </div>
                 
                 <!-- Tombol Kirim -->
@@ -319,12 +319,12 @@
     function kirimKeWhatsapp(event) {
         event.preventDefault();
 
-        const nama = document.getElementById('nama').value;
-        const nik = document.getElementById('nik').value;
-        const hp = document.getElementById('hp').value;
-        const email = document.getElementById('email').value;
+        const nama   = document.getElementById('nama').value;
+        const nik    = document.getElementById('nik').value;
+        const hp     = document.getElementById('hp').value;
+        const email  = document.getElementById('email').value;
         const alamat = document.getElementById('alamat').value;
-        const paket = document.getElementById('paket').value;
+        const paket  = document.getElementById('paket').value;
 
         const nomorAdmin = "6281290473752"; 
         
