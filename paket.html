@@ -46,18 +46,21 @@
             color: var(--text-dark);
             overflow-x: hidden;
             line-height: 1.6;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Navbar */
+        /* Navbar Alignment (Sama dengan Index) */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 20px; 
+            width: 100%;
             max-width: 1300px;
             margin: 0 auto;
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -67,32 +70,35 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 20px; 
+            gap: 6px; 
+            font-size: 24px; 
             font-weight: 800;
-            color: var(--primary-blue);
             text-decoration: none;
             letter-spacing: -0.5px;
-        }
-
-        .nav-logo span { 
-            color: var(--orange); 
-        }
-        
-        .nav-logo i {
-            font-style: normal;
+            line-height: 1; 
         }
 
         .logo-img {
-            height: 20px;
+            height: 24px; 
             width: auto;
             object-fit: contain;
         }
 
+        .nav-logo span {
+            color: var(--orange);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo .net-text {
+            color: var(--primary-blue);
+        }
+
         .nav-links {
             display: flex;
-            gap: 70px;
+            gap: 30px; 
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -124,72 +130,92 @@
             color: var(--orange); 
         }
 
+        .nav-right-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .nav-btn {
             background: var(--primary-blue);
             color: white;
             padding: 10px 20px;
             border-radius: 30px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             text-decoration: none;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
         .nav-btn:hover {
             background: #003da1;
-            transform: translateY(-1px);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 79, 196, 0.2);
+        }
+
+        /* Menu Hamburger untuk Mobile */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 4px;
         }
 
         /* Header Section */
         .page-header {
             text-align: center;
-            padding: 60px 20px 20px;
+            padding: 40px 20px 10px;
             max-width: 800px;
             margin: 0 auto;
         }
 
         .page-header h1 {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 800;
             color: #0f172a;
             margin-bottom: 16px;
+            letter-spacing: -1px;
         }
 
         .page-header p {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-muted);
         }
 
-        /* Pricing Cards Section dengan Fitur Geser / Scroll Snap */
+        /* Pricing Cards Section */
         .pricing-section {
             max-width: 1400px;
+            width: 100%;
             margin: 0 auto;
-            padding: 40px 20px 80px;
+            padding: 20px 20px 60px;
+            flex: 1;
         }
 
         .pricing-container {
             overflow-x: auto;
-            scrollbar-width: none; /* Sembunyikan scrollbar di Firefox */
-            padding: 20px 10px;
+            scrollbar-width: none; 
+            padding: 20px 10px 30px;
+            -webkit-overflow-scrolling: touch;
         }
 
         .pricing-container::-webkit-scrollbar {
-            display: none; /* Sembunyikan scrollbar di Chrome/Safari */
+            display: none; 
         }
 
         .pricing-grid {
             display: flex;
             gap: 24px;
-            padding-bottom: 10px;
-            /* Mengaktifkan fitur snap geser */
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory; 
         }
 
         .price-card {
-            flex: 0 0 290px; /* Lebar tetap kartu agar bisa digeser rapi */
-            scroll-snap-align: center; /* Kartu otomatis berhenti di tengah saat digeser */
-            background: rgba(255, 255, 255, 0.92);
+            flex: 0 0 290px; 
+            scroll-snap-align: center; 
+            background: rgba(255, 255, 255, 0.95);
             border: 1px solid #e2e8f0;
             border-radius: 20px;
             padding: 35px 24px;
@@ -206,7 +232,6 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Highlighted/Popular Card */
         .price-card.popular {
             border: 2px solid var(--orange);
             background: #ffffff;
@@ -316,7 +341,7 @@
             background: #e05a00;
         }
 
-        /* Petunjuk Geser untuk User Mobile */
+        /* Petunjuk Geser / Swipe Indicator */
         .scroll-hint {
             display: flex;
             justify-content: center;
@@ -324,7 +349,7 @@
             gap: 8px;
             color: var(--text-muted);
             font-size: 13px;
-            margin-top: 15px;
+            margin-top: 5px;
             font-weight: 500;
         }
 
@@ -342,48 +367,72 @@
         footer {
             text-align: center;
             color: var(--text-muted);
-            font-size: 10px;
-            padding: 10px 30px;
-            background: rgba(248, 250, 252, 0.9);
+            font-size: 11px;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.95);
             border-top: 1px solid #e2e8f0;
+            margin-top: auto;
         }
 
-        /* Responsive Breakpoints */
+        /* Responsive Breakpoints & Mobile Menu Overlay Fixes */
+        @media (max-width: 992px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: white;
+                padding: 20px;
+                border-bottom: 1px solid #e2e8f0;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+                gap: 20px;
+                align-items: flex-start;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { width: 100%; padding-bottom: 4px; }
+            .nav-links a.active::after { bottom: -2px; }
+        }
+
         @media (max-width: 768px) {
-            .navbar { padding: 16px 20px; }
-            .nav-links { display: none; } 
-            .page-header h1 { font-size: 32px; }
+            .navbar { padding: 12px 15px; }
+            .nav-logo { font-size: 20px; }
+            .logo-img { height: 20px; }
+            .nav-btn { padding: 8px 16px; font-size: 13px; }
+            .page-header { padding: 30px 15px 10px; }
+            .page-header h1 { font-size: 28px; }
+            .pricing-section { padding: 10px 5px 40px; }
         }
 
-        /* Tampilan Desktop Besar: Menjaga Fitur Geser Tetap Aktif & Rapi */
+       /* Tampilan Desktop Stabil & Bisa Digeser */
         @media (min-width: 1200px) {
             .pricing-grid {
-                display: flex; /* Tetap gunakan flex agar bisa memanjang ke samping */
-                gap: 24px;
-                scroll-snap-type: x mandatory; /* Fitur snap geser tetap aktif di desktop */
-                justify-content: flex-start; /* Memulai barisan dari kiri */
-                padding: 20px 10px;
+                justify-content: flex-start; /* Mengembalikan awal susunan ke kiri agar tidak terpotong */
+                scroll-snap-type: none;
+                padding-left: 20px; /* Memberikan ruang di sisi kiri */
+                padding-right: 20px; /* Memberikan ruang di sisi kanan */
             }
             .price-card {
-                flex: 0 0 320px; /* Sedikit diperlebar di desktop agar terlihat lebih proporsional */
-                scroll-snap-align: start; /* Berhenti rapi di sisi kiri saat digeser */
+                flex: 0 0 310px; /* Mengunci ukuran kartu agar tidak gepeng saat memanjang */
             }
             .scroll-hint {
-                display: flex; /* Tetap tampilkan petunjuk geser di desktop */
+                display: flex; /* Tetap tampilkan petunjuk di laptop sebagai navigasi visual */
             }
         }
     </style>
 </head>
 <body>
 
-<!-- Navbar -->
+<!-- Navbar (Struktur Menu Diperbarui Agar Identik dengan Index) -->
 <nav class="navbar">
     <a href="index.html" class="nav-logo">      
         <img src="wifi.png" alt="Firanet Logo" class="logo-img">
-        <i><span>fira</span>net</i>
+        <span>fira<span class="net-text">net</span></span>
     </a>
     
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Beranda</a></li>
         <li><a href="tentang.html">Tentang Kami</a></li>
         <li><a href="layanan.html">Layanan</a></li>
@@ -391,9 +440,14 @@
         <li><a href="coverage.html">Coverage</a></li>
         <li><a href="kontak.html">Kontak</a></li>
     </ul>
-    <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
-</nav>
 
+    <div class="nav-right-actions">
+        <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+</nav>
 
 <!-- Header -->
 <div class="page-header">
@@ -406,14 +460,14 @@
     <div class="pricing-container">
         <div class="pricing-grid">
             
-            <!-- BARU: Card 0: Bronze -->
+            <!-- Paket 0: Bronze (20 Mbps) -->
             <div class="price-card">
                 <div class="card-header">
                     <h3>Bronze</h3>
                     <div class="speed">20 <span>Mbps</span></div>
                 </div>
                 <div class="price-box">
-                    <div class="amount">Rp150.000<span>/Bulan</span></div>
+                    <div class="amount">Rp166.500<span>/Bulan</span></div>
                 </div>
                 <ul class="features-list">
                     <li><i class="fa-solid fa-circle-check"></i> Kecepatan s.d 20 Mbps</li>
@@ -421,10 +475,28 @@
                     <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-2 Perangkat</li>
                     <li><i class="fa-solid fa-circle-check"></i> Hemat & Ekonomis</li>
                 </ul>
-                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Bronze 20 Mbps - Rp150rb')">Pilih Paket</a>
+                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Bronze 20 Mbps - Rp166.500')">Pilih Paket</a>
+            </div>
+
+            <!-- Paket Baru: Iron (30 Mbps) -->
+            <div class="price-card">
+                <div class="card-header">
+                    <h3>Iron</h3>
+                    <div class="speed">30 <span>Mbps</span></div>
+                </div>
+                <div class="price-box">
+                    <div class="amount">Rp169.000<span>/Bulan</span></div>
+                </div>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-circle-check"></i> Kecepatan s.d 30 Mbps</li>
+                    <li><i class="fa-solid fa-circle-check"></i> True Unlimited (Tanpa FUP)</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-3 Perangkat</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Stabil & Terjangkau</li>
+                </ul>
+                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Iron 30 Mbps - Rp169.000')">Pilih Paket</a>
             </div>
             
-            <!-- Card 1: Silver -->
+            <!-- Card 1: Silver (50 Mbps) -->
             <div class="price-card">
                 <div class="card-header">
                     <h3>Silver</h3>
@@ -439,10 +511,10 @@
                     <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-4 Perangkat</li>
                     <li><i class="fa-solid fa-circle-check"></i> Download & Upload Stabil</li>
                 </ul>
-                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Silver 50 Mbps - Rp175rb')">Pilih Paket</a>
+                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Silver 50 Mbps - Rp175.000')">Pilih Paket</a>
             </div>
 
-            <!-- Card 2: Gold (Popular) -->
+            <!-- Card 2: Gold (75 Mbps - Popular) -->
             <div class="price-card popular">
                 <div class="popular-badge">Populer</div>
                 <div class="card-header">
@@ -458,10 +530,10 @@
                     <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-6 Perangkat</li>
                     <li><i class="fa-solid fa-circle-check"></i> Prioritas Trafik Streaming/Game</li>
                 </ul>
-                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Gold 75 Mbps - Rp185rb')">Pilih Paket</a>
+                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Gold 75 Mbps - Rp185.000')">Pilih Paket</a>
             </div>
 
-            <!-- Card 3: Platinum -->
+            <!-- Card 3: Platinum (100 Mbps) -->
             <div class="price-card">
                 <div class="card-header">
                     <h3>Platinum</h3>
@@ -476,10 +548,10 @@
                     <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-10 Perangkat</li>
                     <li><i class="fa-solid fa-circle-check"></i> Ultra Low Latency</li>
                 </ul>
-                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Platinum 100 Mbps - Rp215rb')">Pilih Paket</a>
+                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Platinum 100 Mbps - Rp215.000')">Pilih Paket</a>
             </div>
 
-            <!-- BARU: Card 3.5: Diamond -->
+            <!-- Card 3.5: Diamond (150 Mbps) -->
             <div class="price-card">
                 <div class="card-header">
                     <h3>Diamond</h3>
@@ -494,10 +566,10 @@
                     <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-12 Perangkat</li>
                     <li><i class="fa-solid fa-circle-check"></i> Bandwidth Ekstra Luas</li>
                 </ul>
-                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Diamond 150 Mbps - Rp285rb')">Pilih Paket</a>
+                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Diamond 150 Mbps - Rp285.000')">Pilih Paket</a>
             </div>
 
-            <!-- Card 4: Business -->
+            <!-- Card 4: Business (200 Mbps) -->
             <div class="price-card">
                 <div class="card-header">
                     <h3>Business</h3>
@@ -512,13 +584,16 @@
                     <li><i class="fa-solid fa-circle-check"></i> Perangkat 15+ (Kantor/Kafe)</li>
                     <li><i class="fa-solid fa-circle-check"></i> 1:1 Symmetrical Speed</li>
                 </ul>
-                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Business 200 Mbps - Rp350rb')">Pilih Paket</a>
+                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Business 200 Mbps - Rp350.000')">Pilih Paket</a>
             </div>
 
         </div>
     </div>
     
-   
+    <!-- Petunjuk Geser / Swipe Hint -->
+    <div class="scroll-hint">
+        <i class="fa-solid fa-left-right"></i> Geser horizontal untuk melihat paket lainnya
+    </div>
 </section>
 
 <!-- Footer -->
@@ -526,11 +601,26 @@
     <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
 </footer>
 
-<!-- JavaScript pendukung fungsi otomatisasi form -->
+<!-- JavaScript pendukung fungsi otomatisasi & Menu Mobile -->
 <script>
+    // Menyimpan data paket pilihan untuk form pendaftaran
     function setPaketPilihan(namaPaket) {
         localStorage.setItem('paketTerpilih', namaPaket);
     }
+
+    // Mengaktifkan fungsionalitas tombol menu hamburger pada resolusi mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        const icon = menuToggle.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.className = 'fa-solid fa-xmark';
+        } else {
+            icon.className = 'fa-solid fa-bars';
+        }
+    });
 </script>
 
 </body>

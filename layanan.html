@@ -8,7 +8,7 @@
      <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
     
     <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2=family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -35,7 +35,6 @@
         }
 
         body {
-            /* Ditingkatkan opacity lapisannya agar teks jauh lebih mudah dibaca */
             background-image: 
                 linear-gradient(rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0.95)), 
                 url('poto.png'); 
@@ -72,23 +71,24 @@
         .nav-logo {
             display: flex;
             align-items: center;
-            gap: 4px; 
-            font-size: 20px; 
+            gap: 6px; 
+            font-size: 24px; /* Disesuaikan agar proporsional */
             font-weight: 800;
             text-decoration: none;
             letter-spacing: -0.5px;
             line-height: 1; 
         }
 
-        /* Pembetulan ukuran gambar logo agar proporsional */
         .logo-img {
-            height: 20px;
+            height: 24px; /* Diubah ke 24px agar sejajar teks */
             width: auto;
             object-fit: contain;
         }
 
         .nav-logo span {
             color: var(--orange);
+            display: flex;
+            align-items: center;
         }
 
         .nav-logo .net-text {
@@ -97,12 +97,12 @@
 
         .nav-links {
             display: flex;
-            gap: 70px;
+            gap: 30px; /* Dikurangi dari 70px agar tidak merusak layout desktop/tablet */
             list-style: none;
         }
 
         .nav-links a {
-             color: var(--text-muted);
+            color: var(--text-muted);
             text-decoration: none;
             font-weight: 600;
             font-size: 15px; 
@@ -133,12 +133,13 @@
         .nav-btn {
             background: var(--primary-blue);
             color: white;
-            padding: 12px 26px;
+            padding: 10px 20px; /* Sedikit diefisienkan ruangnya */
             border-radius: 30px;
             font-weight: 700;
-            font-size: 15px;
+            font-size: 14px;
             text-decoration: none;
             transition: all 0.2s ease;
+            white-space: nowrap; /* Mencegah teks tombol patah dua baris */
         }
 
         .nav-btn:hover {
@@ -150,13 +151,13 @@
         /* Header Layanan */
         .services-header {
             text-align: center;
-            padding: 60px 40px 20px;
+            padding: 40px 20px 20px; /* Disesuaikan untuk mobile-first */
             max-width: 800px;
             margin: 0 auto;
         }
 
         .services-header h1 {
-            font-size: 42px;
+            font-size: 38px;
             font-weight: 800;
             color: #0f172a;
             margin-bottom: 16px;
@@ -164,7 +165,7 @@
         }
 
         .services-header p {
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-muted);
         }
 
@@ -173,8 +174,8 @@
             max-width: 1300px;
             width: 100%;
             margin: 0 auto;
-            padding: 40px 40px 80px;
-            flex: 1; /* Mendorong footer ke bawah jika konten sedikit */
+            padding: 20px 20px 60px;
+            flex: 1; 
         }
 
         .services-grid {
@@ -193,7 +194,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; /* Menjaga tombol tetap rata di bawah */
+            justify-content: space-between; 
         }
 
         .service-large-card:hover {
@@ -218,17 +219,18 @@
         }
 
         .service-content h3 {
-            font-size: 24px;
+            font-size: 22px;
             color: #0f172a;
             font-weight: 800;
             margin-bottom: 12px;
         }
 
         .service-content p {
-            font-size: 15px;
+            font-size: 14.5px;
             color: var(--text-muted);
             margin-bottom: 24px;
             line-height: 1.6;
+            text-align: justify;
         }
 
         .service-features-list {
@@ -237,11 +239,11 @@
         }
 
         .service-features-list li {
-            font-size: 14.5px;
+            font-size: 14px;
             color: var(--text-dark);
             margin-bottom: 12px;
             display: flex;
-            align-items: flex-start; /* Bagus jika teks list memanjang ke bawah */
+            align-items: flex-start; 
             gap: 12px;
             font-weight: 500;
         }
@@ -249,7 +251,7 @@
         .service-features-list li i {
             color: #10b981; 
             font-size: 16px;
-            margin-top: 4px; /* Menyelaraskan centang dengan baris pertama teks */
+            margin-top: 4px; 
         }
 
         .btn-service-action {
@@ -263,6 +265,8 @@
             text-decoration: none;
             transition: all 0.2s ease;
             border: 1px solid transparent;
+            width: auto;
+            text-align: center;
         }
 
         .btn-service-action:hover {
@@ -275,26 +279,38 @@
         footer {
             text-align: center;
             color: var(--text-muted);
-            font-size: 10px;
-            padding: 10px 20px;
+            font-size: 11px;
+            padding: 15px 20px;
             background: rgba(255, 255, 255, 0.95);
             border-top: 1px solid #e2e8f0;
             margin-top: auto;
         }
 
-        /* Responsive Breakpoints */
+        /* Responsive Breakpoints (Optimasi HP & Tablet) */
         @media (max-width: 1024px) {
             .services-grid { grid-template-columns: 1fr; gap: 24px; }
-            .services-header h1 { font-size: 36px; }
+            .services-header h1 { font-size: 34px; }
         }
 
         @media (max-width: 768px) {
-            .navbar { padding: 15px 20px; }
-            .nav-links { display: none; } /* Kamu bisa buat hamburger menu di sini nanti */
-            .services-header { padding: 40px 20px 10px; }
-            .services-header h1 { font-size: 32px; }
-            .services-container { padding: 20px 20px 60px; }
-            .service-large-card { padding: 30px; }
+            .nav-links { display: none; } 
+            .navbar { padding: 12px 15px; }
+            .nav-logo { font-size: 20px; }
+            .logo-img { height: 20px; }
+            .nav-btn { padding: 8px 16px; font-size: 13px; }
+            .services-header { padding: 30px 15px 10px; }
+            .services-header h1 { font-size: 28px; }
+            .services-container { padding: 15px 15px 40px; }
+            .service-large-card { padding: 25px; }
+            .btn-service-action { align-self: stretch; text-align: center; } /* Tombol jadi full width di HP agar mudah ditap */
+        }
+
+        @media (max-width: 480px) {
+            .navbar { padding: 10px 12px; }
+            .nav-logo { font-size: 18px; }
+            .logo-img { height: 18px; }
+            .services-header h1 { font-size: 24px; }
+            .service-content h3 { font-size: 20px; }
         }
     </style>
 </head>
@@ -304,7 +320,6 @@
 <nav class="navbar">
     <a href="index.html" class="nav-logo">      
         <img src="wifi.png" alt="Firanet Logo" class="logo-img">
-        <!-- Menghilangkan tag <i> dan pemisah span yang merusak struktur font -->
         <span>fira<span class="net-text">net</span></span>
     </a>
     <ul class="nav-links">
