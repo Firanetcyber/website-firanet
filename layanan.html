@@ -8,7 +8,7 @@
      <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
     
     <!-- Google Fonts & Font Awesome Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -58,21 +58,29 @@
             align-items: center;
             padding: 12px 20px; 
             width: 100%;
-            max-width: 1300px;
-            margin: 0 auto;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
             border-bottom: 1px solid #e2e8f0;
         }
 
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
         .nav-logo {
             display: flex;
             align-items: center;
             gap: 6px; 
-            font-size: 24px; /* Disesuaikan agar proporsional */
+            font-size: 24px; 
             font-weight: 800;
             text-decoration: none;
             letter-spacing: -0.5px;
@@ -80,7 +88,7 @@
         }
 
         .logo-img {
-            height: 24px; /* Diubah ke 24px agar sejajar teks */
+            height: 24px; 
             width: auto;
             object-fit: contain;
         }
@@ -97,8 +105,9 @@
 
         .nav-links {
             display: flex;
-            gap: 30px; /* Dikurangi dari 70px agar tidak merusak layout desktop/tablet */
+            gap: 30px; 
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -130,16 +139,22 @@
             color: var(--orange);
         }
 
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
         .nav-btn {
             background: var(--primary-blue);
             color: white;
-            padding: 10px 20px; /* Sedikit diefisienkan ruangnya */
+            padding: 10px 20px; 
             border-radius: 30px;
             font-weight: 700;
             font-size: 14px;
             text-decoration: none;
             transition: all 0.2s ease;
-            white-space: nowrap; /* Mencegah teks tombol patah dua baris */
+            white-space: nowrap; 
         }
 
         .nav-btn:hover {
@@ -148,10 +163,22 @@
             box-shadow: 0 4px 12px rgba(0, 79, 196, 0.2);
         }
 
+        /* Menu Toggle Button (Hidden on Desktop) */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 22px;
+            color: var(--text-dark);
+            cursor: pointer;
+            padding: 5px;
+            z-index: 101;
+        }
+
         /* Header Layanan */
         .services-header {
             text-align: center;
-            padding: 40px 20px 20px; /* Disesuaikan untuk mobile-first */
+            padding: 40px 20px 20px; 
             max-width: 800px;
             margin: 0 auto;
         }
@@ -286,14 +313,49 @@
             margin-top: auto;
         }
 
-        /* Responsive Breakpoints (Optimasi HP & Tablet) */
+        /* Responsive Breakpoints */
         @media (max-width: 1024px) {
             .services-grid { grid-template-columns: 1fr; gap: 24px; }
             .services-header h1 { font-size: 34px; }
         }
 
+        /* Tablet & Mobile Menu Navigation Breakpoint */
         @media (max-width: 768px) {
-            .nav-links { display: none; } 
+            .menu-toggle { 
+                display: block; /* Menampilkan tombol hamburger */
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%; /* Sembunyikan menu di sebelah kanan layar */
+                width: 70%;
+                max-width: 300px;
+                height: 100vh;
+                background: white;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 30px 30px;
+                gap: 20px;
+                transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            }
+
+            .nav-links.active {
+                right: 0; /* Geser menu masuk ke layar saat aktif */
+            }
+
+            .nav-links a {
+                font-size: 18px;
+                display: block;
+                width: 100%;
+                padding: 10px 0;
+            }
+
+            .nav-links a.active::after {
+                bottom: 4px;
+            }
+
             .navbar { padding: 12px 15px; }
             .nav-logo { font-size: 20px; }
             .logo-img { height: 20px; }
@@ -302,7 +364,7 @@
             .services-header h1 { font-size: 28px; }
             .services-container { padding: 15px 15px 40px; }
             .service-large-card { padding: 25px; }
-            .btn-service-action { align-self: stretch; text-align: center; } /* Tombol jadi full width di HP agar mudah ditap */
+            .btn-service-action { align-self: stretch; text-align: center; } 
         }
 
         @media (max-width: 480px) {
@@ -318,19 +380,29 @@
 
 <!-- Navbar -->
 <nav class="navbar">
-    <a href="index.html" class="nav-logo">      
-        <img src="wifi.png" alt="Firanet Logo" class="logo-img">
-        <span>fira<span class="net-text">net</span></span>
-    </a>
-    <ul class="nav-links">
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="tentang.html">Tentang Kami</a></li>
-        <li><a href="layanan.html" class="active">Layanan</a></li>
-        <li><a href="paket.html">Paket</a></li>
-        <li><a href="coverage.html">Coverage</a></li>
-        <li><a href="kontak.html">Kontak</a></li>
-    </ul>
-    <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">      
+            <img src="wifi.png" alt="Firanet Logo" class="logo-img">
+            <span>fira<span class="net-text">net</span></span>
+        </a>
+        
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang Kami</a></li>
+            <li><a href="layanan.html" class="active">Layanan</a></li>
+            <li><a href="paket.html">Paket</a></li>
+            <li><a href="coverage.html">Coverage</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+
+        <div class="nav-actions">
+            <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
+            <!-- Tombol Hamburger -->
+            <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+    </div>
 </nav>
 
 <!-- Header Section -->
@@ -422,6 +494,36 @@
 <footer>
     <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
 </footer>
+
+<!-- JavaScript untuk fungsionalitas Menu HP -->
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    const toggleIcon = menuToggle.querySelector('i');
+
+    menuToggle.addEventListener('click', () => {
+        // Toggle Class Active pada list menu
+        navLinks.classList.toggle('active');
+        
+        // Mengubah Ikon (Bars ke Xmark saat menu terbuka)
+        if(navLinks.classList.contains('active')) {
+            toggleIcon.classList.remove('fa-bars');
+            toggleIcon.classList.add('fa-xmark');
+        } else {
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+        }
+    });
+
+    // Menutup menu otomatis jika user mengklik di luar area menu
+    document.addEventListener('click', (e) => {
+        if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+        }
+    });
+</script>
 
 </body>
 </html>
