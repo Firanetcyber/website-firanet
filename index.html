@@ -98,7 +98,7 @@
 
         .nav-links {
             display: flex;
-            gap: 70px;
+            gap: 40px; /* Diperkecil dari 70px agar lebih proporsional di laptop standar */
             list-style: none;
         }
 
@@ -147,6 +147,18 @@
             transform: translateY(-1px);
         }
 
+        /* Elemen Menu Hamburger (Khusus HP) */
+        #menu-toggle {
+            display: none;
+        }
+
+        .hamburger-label {
+            display: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
         /* Hero Section */
         .hero-wrapper {
             position: relative;
@@ -174,7 +186,6 @@
             letter-spacing: -3px;
         }
 
-        /* Gaya gambar logo pada bagian Hero */
         .hero-logo-img {
             height: 70px; 
             width: auto;
@@ -218,7 +229,6 @@
             transform: translateY(-2px);
         }
 
-        /* Hero Image/Mockup Right side */
         .hero-image-container {
             display: flex;
             justify-content: center;
@@ -317,33 +327,77 @@
             .hero-text .brand-title { justify-content: center; }
         }
 
-        /* PERBAIKAN UTAMA UNTUK TAMPILAN HP (Tweak khusus layar kecil) */
+        /* PERBAIKAN UTAMA UNTUK TAMPILAN HP (Menu Navigasi Aktif) */
         @media (max-width: 640px) {
             .navbar { 
-                padding: 12px 16px; 
+                padding: 14px 16px; 
             }
-            .nav-links { 
-                display: none; 
+
+            /* Munculkan tombol hamburger */
+            .hamburger-label {
+                display: block;
+                order: 2; /* Menempatkan hamburger paling kanan */
             }
+
             .nav-btn {
-                padding: 8px 16px;
-                font-size: 13px;
+                display: none; /* Menyembunyikan tombol WA bawaan navbar di layar kecil agar tidak sesak */
             }
+
+            /* Mengubah sistem menu menjadi dropdown vertikal */
+            .nav-links {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+                border-bottom: 1px solid #e2e8f0;
+                gap: 0;
+                padding: 10px 0;
+                max-height: 0; /* Tersembunyi secara default */
+                overflow: hidden;
+                transition: max-height 0.3s ease-in-out;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 14px 24px;
+                width: 100%;
+                border-bottom: 1px solid #f1f5f9;
+                font-size: 16px;
+            }
+
+            .nav-links a.active::after {
+                display: none; /* Hapus garis bawah aktif di mobile */
+            }
+            
+            /* Trik CSS: Jika checkbox di-check, buka menu drop down */
+            #menu-toggle:checked ~ .nav-links {
+                max-height: 400px; 
+            }
+
+            /* Pengaturan Konten Hero & Fitur di Mobile */
             .hero {
-                padding: 20px 16px 60px;
+                padding: 30px 16px 60px;
                 gap: 24px;
             }
             .hero-text .brand-title { 
-                font-size: 36px; /* Mengecilkan teks brand FIRANET */
+                font-size: 36px;
                 letter-spacing: -1px; 
                 gap: 8px;
                 margin-bottom: 5px;
             }
             .hero-text .brand-title .hero-logo-img { 
-                height: 34px; /* Mengecilkan logo wifi di atas judul */
+                height: 34px; 
             } 
             .hero-text h1 { 
-                font-size: 26px; /* Mengecilkan headline utama agar tidak memakan tempat */
+                font-size: 26px; 
                 margin-bottom: 14px;
             }
             .hero-text p {
@@ -375,6 +429,12 @@
         <i><span class="fira-text">fira</span><span class="net-text">net</span></i>
     </a>
     
+    <!-- Input checkbox & label tersembunyi untuk mentrigger menu tanpa JS -->
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburger-label">
+        <i class="fa-solid fa-bars"></i>
+    </label>
+    
     <ul class="nav-links">
         <li><a href="index.html" class="active">Beranda</a></li>
         <li><a href="tentang.html">Tentang Kami</a></li>
@@ -382,7 +442,10 @@
         <li><a href="paket.html">Paket</a></li>
         <li><a href="coverage.html">Coverage</a></li>
         <li><a href="kontak.html">Kontak</a></li>
+        <!-- Menyisipkan tombol Hubungi Kami ke dalam list agar ikut muncul saat menu di klik pada HP -->
+        <li><a href="https://wa.me/6281290473752" target="_blank" style="color: var(--primary-blue); font-weight: 700;">Hubungi Kami (WA)</a></li>
     </ul>
+    
     <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
 </nav>
 
