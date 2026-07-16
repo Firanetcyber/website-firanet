@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Layanan Kami - FIRANET</title>
 
-     <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
     
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght=400;500;600;700;800&display=swap" rel="stylesheet">
@@ -49,6 +49,7 @@
             line-height: 1.6;
             display: flex;
             flex-direction: column;
+            -webkit-text-size-adjust: 100%;
         }
 
         /* Navbar */
@@ -74,6 +75,7 @@
             width: 100%;
             max-width: 1300px;
             margin: 0 auto;
+            position: relative; /* Menjadi acuan posisi drop-down menu mobile */
         }
 
         .nav-logo {
@@ -319,60 +321,83 @@
             .services-header h1 { font-size: 34px; }
         }
 
-        /* Layar HP & Tablet (Menu Berganti Menjadi Garis Tiga) */
+        /* TAMPILAN KHUSUS MOBILE (Sudah Diperbaiki & Lebih Rapi) */
         @media (max-width: 768px) {
+            body {
+                background-attachment: scroll; /* Mengurangi lag visual di HP */
+            }
+
             .menu-toggle { 
-                display: block; /* Menampilkan tombol garis tiga */
+                display: block; 
             }
 
+            /* Perubahan Utama: Hapus animasi geser samping, ganti jadi Dropdown Drop-down Bawah Rapi */
             .nav-links {
-                position: fixed;
-                top: 0;
-                right: -100%; /* Menyembunyikan slide menu di kanan */
-                width: 70%;
-                max-width: 300px;
-                height: 100vh;
-                background: white;
-                box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+                display: none; /* Sembunyikan secara default */
+                position: absolute;
+                top: 100%; 
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
                 flex-direction: column;
-                align-items: flex-start;
-                padding: 80px 30px 30px;
-                gap: 20px;
-                transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                align-items: stretch;
+                padding: 15px 10px;
+                gap: 5px;
+                border-top: 1px solid #f1f5f9;
+                border-radius: 0 0 12px 12px;
             }
 
+            /* Muncul saat tombol hamburger diklik */
             .nav-links.active {
-                right: 0; /* Menampilkan slide menu saat aktif */
+                display: flex; 
             }
 
             .nav-links a {
-                font-size: 18px;
+                font-size: 16px;
                 display: block;
                 width: 100%;
-                padding: 10px 0;
+                padding: 12px 15px;
+                border-radius: 8px;
+            }
+
+            /* Highlight background tipis di mobile untuk menu aktif */
+            .nav-links a.active {
+                background-color: #fff7ed;
             }
 
             .nav-links a.active::after {
-                bottom: 4px;
+                display: none; /* Hapus garis bawah dekoratif di mobile agar tidak berantakan */
             }
 
-            .navbar { padding: 12px 15px; }
+            .nav-links a:hover {
+                background-color: #f8fafc;
+            }
+
+            .navbar { padding: 10px 16px; }
             .nav-logo { font-size: 20px; }
             .logo-img { height: 20px; }
             .nav-btn { padding: 8px 16px; font-size: 13px; }
-            .services-header { padding: 30px 15px 10px; }
-            .services-header h1 { font-size: 28px; }
-            .services-container { padding: 15px 15px 40px; }
-            .service-large-card { padding: 25px; }
-            .btn-service-action { align-self: stretch; text-align: center; } 
+            
+            /* Optimasi teks & layout konten di HP agar tidak terlalu besar */
+            .services-header { padding: 30px 16px 10px; }
+            .services-header h1 { font-size: 26px; letter-spacing: -0.5px; }
+            .services-header p { font-size: 14px; }
+            .services-container { padding: 10px 16px 30px; }
+            .service-large-card { padding: 24px 20px; border-radius: 16px; }
+            .service-badge { width: 50px; height: 50px; margin-bottom: 16px; border-radius: 10px; }
+            .service-badge i { font-size: 22px; }
+            .service-content h3 { font-size: 18px; margin-bottom: 8px; }
+            .service-content p { font-size: 13.5px; margin-bottom: 16px; text-align: left; }
+            .service-features-list { margin-bottom: 24px; }
+            .service-features-list li { font-size: 13px; margin-bottom: 10px; gap: 8px; }
+            .service-features-list li i { font-size: 14px; margin-top: 2px; }
+            .btn-service-action { align-self: stretch; text-align: center; padding: 10px 20px; font-size: 13.5px; } 
         }
 
         @media (max-width: 480px) {
-            .navbar { padding: 10px 12px; }
-            .nav-logo { font-size: 18px; }
-            .logo-img { height: 18px; }
-            .services-header h1 { font-size: 24px; }
-            .service-content h3 { font-size: 20px; }
+            .services-header h1 { font-size: 22px; }
+            .nav-btn { display: none; } /* Sembunyikan CTA sekunder di layar sangat kecil agar navbar muat */
         }
     </style>
 </head>
@@ -495,17 +520,16 @@
     <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
 </footer>
 
-<!-- JavaScript untuk Menu Mobile -->
+<!-- JavaScript Terupdate -->
 <script>
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
     const toggleIcon = menuToggle.querySelector('i');
 
-    menuToggle.addEventListener('click', () => {
-        // Jalankan animasi slide menu masuk/keluar
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Mencegah bentrok dengan pendengar klik dokumen
         navLinks.classList.toggle('active');
         
-        // Ubah ikon dari garis tiga (bars) menjadi silang (xmark)
         if(navLinks.classList.contains('active')) {
             toggleIcon.classList.remove('fa-bars');
             toggleIcon.classList.add('fa-xmark');
@@ -515,7 +539,7 @@
         }
     });
 
-    // Menutup menu otomatis jika user mengklik bagian luar menu
+    // Menutup menu otomatis jika user mengklik bagian luar area menu
     document.addEventListener('click', (e) => {
         if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
             navLinks.classList.remove('active');
