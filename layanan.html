@@ -163,7 +163,7 @@
             box-shadow: 0 4px 12px rgba(0, 79, 196, 0.2);
         }
 
-        /* Menu Toggle Button (Hidden on Desktop) */
+        /* Menu Toggle Button (Tersembunyi di Desktop) */
         .menu-toggle {
             display: none;
             background: none;
@@ -319,16 +319,16 @@
             .services-header h1 { font-size: 34px; }
         }
 
-        /* Tablet & Mobile Menu Navigation Breakpoint */
+        /* Layar HP & Tablet (Menu Berganti Menjadi Garis Tiga) */
         @media (max-width: 768px) {
             .menu-toggle { 
-                display: block; /* Menampilkan tombol hamburger */
+                display: block; /* Menampilkan tombol garis tiga */
             }
 
             .nav-links {
                 position: fixed;
                 top: 0;
-                right: -100%; /* Sembunyikan menu di sebelah kanan layar */
+                right: -100%; /* Menyembunyikan slide menu di kanan */
                 width: 70%;
                 max-width: 300px;
                 height: 100vh;
@@ -342,7 +342,7 @@
             }
 
             .nav-links.active {
-                right: 0; /* Geser menu masuk ke layar saat aktif */
+                right: 0; /* Menampilkan slide menu saat aktif */
             }
 
             .nav-links a {
@@ -397,7 +397,7 @@
 
         <div class="nav-actions">
             <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
-            <!-- Tombol Hamburger -->
+            <!-- Tombol Hamburger (Garis Tiga) -->
             <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
                 <i class="fa-solid fa-bars"></i>
             </button>
@@ -495,17 +495,17 @@
     <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
 </footer>
 
-<!-- JavaScript untuk fungsionalitas Menu HP -->
+<!-- JavaScript untuk Menu Mobile -->
 <script>
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
     const toggleIcon = menuToggle.querySelector('i');
 
     menuToggle.addEventListener('click', () => {
-        // Toggle Class Active pada list menu
+        // Jalankan animasi slide menu masuk/keluar
         navLinks.classList.toggle('active');
         
-        // Mengubah Ikon (Bars ke Xmark saat menu terbuka)
+        // Ubah ikon dari garis tiga (bars) menjadi silang (xmark)
         if(navLinks.classList.contains('active')) {
             toggleIcon.classList.remove('fa-bars');
             toggleIcon.classList.add('fa-xmark');
@@ -515,7 +515,7 @@
         }
     });
 
-    // Menutup menu otomatis jika user mengklik di luar area menu
+    // Menutup menu otomatis jika user mengklik bagian luar menu
     document.addEventListener('click', (e) => {
         if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
             navLinks.classList.remove('active');
