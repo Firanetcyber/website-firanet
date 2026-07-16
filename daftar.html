@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     
     <style>
-        /* --- CSS Reset & Base Styling --- */
         * {
             box-sizing: border-box;  
             margin: 0;
@@ -46,12 +45,12 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: start; /* MENGUBAH POSISI DARI center KE start AGAR SEJAJAR DI ATAS */
+            align-items: start;
         }
 
         /* --- Sisi Kiri: Informasi --- */
         .cta-info {
-            margin-top: 20px; /* MENAMBAHKAN SEDIKIT JARAK AGAR TIDAK TEMPEL KE ATAS */
+            margin-top: 20px;
         }
 
         .cta-info h2 {
@@ -170,7 +169,6 @@
             transform: scale(0.98);
         }
 
-        /* --- Tombol Kembali ke Beranda --- */
         .btn-back {
             display: flex;
             align-items: center;
@@ -209,7 +207,7 @@
             border-top: 1px solid #e2e8f0;
         }
 
-        /* --- Responsive Web Design (Mobile Friendly) --- */
+        /* --- Responsive Web Design --- */
         @media (max-width: 768px) {
             .cta-container {
                 grid-template-columns: 1fr;
@@ -218,7 +216,7 @@
 
             .cta-info {
                 text-align: center;
-                margin-top: 0; /* Reset margin di mobile agar seimbang */
+                margin-top: 0;
             }
 
             .cta-info h2 {
@@ -265,7 +263,7 @@
                     <label for="nama">Nama Lengkap</label>
                     <input type="text" id="nama" placeholder="Contoh: Budi Santoso" required>
                 </div>
-                <!-- Penambahan Input NIK -->
+                <!-- Input NIK -->
                 <div class="form-group">
                     <label for="nik">NIK (No. KTP)</label>
                     <input type="number" id="nik" placeholder="Contoh: 3201234567890001" required>
@@ -274,7 +272,7 @@
                     <label for="hp">Nomor WhatsApp</label>
                     <input type="tel" id="hp" placeholder="Contoh: 08123456789" required>
                 </div>
-                <!-- Penambahan Input Email -->
+                <!-- Input Email -->
                 <div class="form-group">
                     <label for="email">Alamat Email</label>
                     <input type="email" id="email" placeholder="Contoh: budi@gmail.com" required>
@@ -282,19 +280,20 @@
                 <div class="form-group">
                     <label for="paket">Pilihan Paket Internet</label>
                     <select id="paket" required>
-                        <option value="Pilih Paket Yang Anda Inginkan" selected></option>
-                        <option value="Bronze 20 Mbps - Rp166rb">Bronze (20 Mbps) - Rp166.500/Bulan</option>
-                        <option value="Iron 30 Mbps - Rp169rb">Iron (30 Mbps) - Rp169.000/Bulan</option>
-                        <option value="Silver 50 Mbps - Rp175rb">Silver (50 Mbps) - Rp175.000/Bulan</option>
-                        <option value="Gold 75 Mbps - Rp185rb">Gold (75 Mbps) - Rp185.000/Bulan (Populer)</option>
-                        <option value="Platinum 100 Mbps - Rp215rb">Platinum (100 Mbps) - Rp215.000/Bulan</option>
-                        <option value="Diamond 150 Mbps - Rp285rb">Diamond (150 Mbps) - Rp285.000/Bulan</option>
-                        <option value="Business 200 Mbps - Rp350rb">Business (200 Mbps) - Rp350.000/Bulan</option>
+                        <option value="" disabled selected>Pilih Paket Yang Anda Inginkan</option>
+                        <option value="Bronze 20 Mbps - Rp166.500">Bronze (20 Mbps) - Rp166.500/Bulan</option>
+                        <option value="Iron 30 Mbps - Rp169.000">Iron (30 Mbps) - Rp169.000/Bulan</option>
+                        <option value="Silver 50 Mbps - Rp175.000">Silver (50 Mbps) - Rp175.000/Bulan</option>
+                        <option value="Gold 75 Mbps - Rp185.000">Gold (75 Mbps) - Rp185.000/Bulan (Populer)</option>
+                        <option value="Platinum 100 Mbps - Rp215.000">Platinum (100 Mbps) - Rp215.000/Bulan</option>
+                        <option value="Diamond 150 Mbps - Rp285.000">Diamond (150 Mbps) - Rp285.000/Bulan</option>
+                        <option value="Business 200 Mbps - Rp350.000">Business (200 Mbps) - Rp350.000/Bulan</option>
                     </select>
                 </div>
+                
                 <div class="form-group">
-                    <label for="alamat">Alamat Pemasangan Lengkap</label>
-                    <input type="text" id="perumahan" placeholder="Blok dan Nomor Rumah" required>
+                    <label for="alamat">Alamat Lengkap/Perumahan</label>
+                    <input type="text" id="alamat" placeholder="Blok dan Nomor Rumah" required>
                 </div>
                 
                 <!-- Tombol Kirim -->
@@ -304,7 +303,7 @@
                 <a href="index.html" class="btn-back">
                     <i class="fa-solid fa-arrow-left"></i> Kembali ke Beranda
                 </a>
-            </</form>
+            </form> 
         </div>
     </div>
 </div>
@@ -323,19 +322,19 @@
         const nik    = document.getElementById('nik').value;
         const hp     = document.getElementById('hp').value;
         const email  = document.getElementById('email').value;
-        const alamat = document.getElementById('alamat').value;
+        const alamat = document.getElementById('alamat').value; 
         const paket  = document.getElementById('paket').value;
 
         const nomorAdmin = "6281290473752"; 
         
         const pesan = `Halo Firanet, saya ingin mendaftar pasang baru. Berikut data diri saya:
 
-• *Nama          :* ${nama}
-• *NIK           :* ${nik}
-• *No. WA        :* ${hp}
-• *Email         :* ${email}
-• *Alamat Pasang :* ${alamat}
-• *Paket Pilihan :* ${paket}
+• *Nama*           : ${nama}
+• *NIK*            : ${nik}
+• *No. WA*         : ${hp}
+• *Email*          : ${email}
+• *Alamat Pasang*  : ${alamat}
+• *Paket Pilihan*  : ${paket}
 
 Mohon segera diproses untuk pengecekan di lokasi saya, terima kasih.`;
 
