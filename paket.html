@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paket Internet FIRANET - Pilihan Terbaik Untuk Anda</title>
 
-     <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
     
     <!-- Google Fonts & Font Awesome Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -22,11 +22,13 @@
 
         :root {
             --primary-blue: #004fc4;
+            --primary-hover: #003da1;
             --light-blue: #eef4ff;
             --orange: #ff6600;
+            --orange-hover: #e05a00;
             --text-dark: #1e293b;
             --text-muted: #64748b;
-            --bg-light: #ffffff;
+            --border-color: #e2e8f0;
             --bg-gray: #f8fafc;
         }
 
@@ -35,36 +37,48 @@
         }
 
         body {
+            background-color: var(--bg-gray);
             background-image: 
-                linear-gradient(rgba(248, 250, 252, 0.85), rgba(248, 250, 252, 0.85)), 
+                linear-gradient(rgba(248, 250, 252, 0.92), rgba(248, 250, 252, 0.92)), 
                 url('poto.png'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed; 
+
             min-height: 100vh;
             color: var(--text-dark);
             overflow-x: hidden;
             line-height: 1.6;
             display: flex;
             flex-direction: column;
+            -webkit-text-size-adjust: 100%;
         }
 
-        /* Navbar Alignment (Sama dengan Index) */
+        /* Navbar (Konsisten 100% dengan Tentang Kami) */
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 12px 20px; 
             width: 100%;
-            max-width: 1300px;
-            margin: 0 auto;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative; /* Acuan posisi drop-down menu mobile */
         }
 
         .nav-logo {
@@ -77,11 +91,12 @@
             letter-spacing: -0.5px;
             line-height: 1; 
         }
-
+        
         .logo-img {
             height: 24px; 
             width: auto;
             object-fit: contain;
+            display: block;
         }
 
         .nav-logo span {
@@ -111,10 +126,8 @@
             padding-bottom: 8px;
         }
 
-        .nav-links a.active { 
-            color: var(--orange); 
-        }
-
+        .nav-links a.active { color: var(--orange); }
+        
         .nav-links a.active::after {
             content: '';
             position: absolute;
@@ -126,11 +139,9 @@
             border-radius: 2px;
         }
 
-        .nav-links a:hover { 
-            color: var(--orange); 
-        }
+        .nav-links a:hover { color: var(--orange); }
 
-        .nav-right-actions {
+        .nav-actions {
             display: flex;
             align-items: center;
             gap: 15px;
@@ -139,7 +150,7 @@
         .nav-btn {
             background: var(--primary-blue);
             color: white;
-            padding: 10px 20px;
+            padding: 10px 20px; 
             border-radius: 30px;
             font-weight: 700;
             font-size: 14px;
@@ -149,12 +160,12 @@
         }
 
         .nav-btn:hover {
-            background: #003da1;
+            background: var(--primary-hover);
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0, 79, 196, 0.2);
         }
 
-        /* Menu Hamburger untuk Mobile */
+        /* Menu Toggle Button (Tersembunyi di Desktop) */
         .menu-toggle {
             display: none;
             background: none;
@@ -162,7 +173,8 @@
             font-size: 22px;
             color: var(--text-dark);
             cursor: pointer;
-            padding: 4px;
+            padding: 5px;
+            z-index: 101;
         }
 
         /* Header Section */
@@ -174,10 +186,10 @@
         }
 
         .page-header h1 {
-            font-size: 38px;
+            font-size: 36px;
             font-weight: 800;
-            color: #0f172a;
-            margin-bottom: 16px;
+            color: var(--text-dark);
+            margin-bottom: 12px;
             letter-spacing: -1px;
         }
 
@@ -215,21 +227,21 @@
         .price-card {
             flex: 0 0 290px; 
             scroll-snap-align: center; 
-            background: rgba(255, 255, 255, 0.95);
-            border: 1px solid #e2e8f0;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid var(--border-color);
             border-radius: 20px;
             padding: 35px 24px;
             display: flex;
             flex-direction: column;
             position: relative;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
             backdrop-filter: blur(5px);
             transition: all 0.3s ease;
         }
 
         .price-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.08);
         }
 
         .price-card.popular {
@@ -255,7 +267,7 @@
 
         .card-header h3 {
             font-size: 22px;
-            color: #0f172a;
+            color: var(--text-dark);
             font-weight: 800;
             margin-bottom: 5px;
         }
@@ -274,8 +286,8 @@
         }
 
         .price-box {
-            border-top: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             padding: 15px 0;
             margin-bottom: 25px;
         }
@@ -283,7 +295,7 @@
         .price-box .amount {
             font-size: 26px;
             font-weight: 800;
-            color: #0f172a;
+            color: var(--text-dark);
         }
 
         .price-box .amount span {
@@ -338,7 +350,7 @@
         }
 
         .price-card.popular .btn-select:hover {
-            background: #e05a00;
+            background: var(--orange-hover);
         }
 
         /* Petunjuk Geser / Swipe Indicator */
@@ -368,84 +380,123 @@
             text-align: center;
             color: var(--text-muted);
             font-size: 11px;
-            padding: 15px 20px;
+            padding: 20px;
             background: rgba(255, 255, 255, 0.95);
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
             margin-top: auto;
         }
 
-        /* Responsive Breakpoints & Mobile Menu Overlay Fixes */
-        @media (max-width: 992px) {
-            .menu-toggle { display: block; }
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background: white;
-                padding: 20px;
-                border-bottom: 1px solid #e2e8f0;
-                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
-                gap: 20px;
-                align-items: flex-start;
-            }
-            .nav-links.active { display: flex; }
-            .nav-links a { width: 100%; padding-bottom: 4px; }
-            .nav-links a.active::after { bottom: -2px; }
+        /* Responsive Breakpoints (Optimasi HP & Tablet) */
+        @media (max-width: 1024px) {
+            .pricing-section { padding: 10px 5px 40px; }
         }
 
+        /* TAMPILAN MOBILE DROPDOWN (Konsisten dengan Halaman Lain) */
         @media (max-width: 768px) {
-            .navbar { padding: 12px 15px; }
+            body {
+                background-attachment: scroll;
+            }
+
+            .menu-toggle { 
+                display: block; 
+            }
+
+            /* Sistem Drop-down Menu */
+            .nav-links {
+                display: none; 
+                position: absolute;
+                top: 100%; 
+                left: 0;
+                width: 100%;
+                background: #ffffff;
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+                flex-direction: column;
+                align-items: stretch;
+                padding: 15px 10px;
+                gap: 5px;
+                border-top: 1px solid #f1f5f9;
+                border-radius: 0 0 12px 12px;
+            }
+
+            .nav-links.active {
+                display: flex; 
+            }
+
+            .nav-links a {
+                font-size: 16px;
+                display: block;
+                width: 100%;
+                padding: 12px 15px;
+                border-radius: 8px;
+            }
+
+            .nav-links a.active {
+                background-color: #fff7ed;
+            }
+
+            .nav-links a.active::after {
+                display: none; 
+            }
+
+            .nav-links a:hover {
+                background-color: #f8fafc;
+            }
+
+            .navbar { padding: 10px 16px; }
             .nav-logo { font-size: 20px; }
             .logo-img { height: 20px; }
             .nav-btn { padding: 8px 16px; font-size: 13px; }
             .page-header { padding: 30px 15px 10px; }
             .page-header h1 { font-size: 28px; }
-            .pricing-section { padding: 10px 5px 40px; }
         }
 
-       /* Tampilan Desktop Stabil & Bisa Digeser */
+        @media (max-width: 480px) {
+            .nav-btn { display: none; } /* Menyembunyikan tombol kontak di navbar HP kecil */
+        }
+
+        /* Tampilan Desktop Stabil & Bisa Digeser */
         @media (min-width: 1200px) {
             .pricing-grid {
-                justify-content: flex-start; /* Mengembalikan awal susunan ke kiri agar tidak terpotong */
+                justify-content: flex-start; 
                 scroll-snap-type: none;
-                padding-left: 20px; /* Memberikan ruang di sisi kiri */
-                padding-right: 20px; /* Memberikan ruang di sisi kanan */
+                padding-left: 20px; 
+                padding-right: 20px; 
             }
             .price-card {
-                flex: 0 0 310px; /* Mengunci ukuran kartu agar tidak gepeng saat memanjang */
+                flex: 0 0 310px; 
             }
             .scroll-hint {
-                display: flex; /* Tetap tampilkan petunjuk di laptop sebagai navigasi visual */
+                display: flex; 
             }
         }
     </style>
 </head>
 <body>
 
-<!-- Navbar (Struktur Menu Diperbarui Agar Identik dengan Index) -->
+<!-- Navbar -->
 <nav class="navbar">
-    <a href="index.html" class="nav-logo">      
-        <img src="wifi.png" alt="Firanet Logo" class="logo-img">
-        <span>fira<span class="net-text">net</span></span>
-    </a>
-    
-    <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Beranda</a></li>
-        <li><a href="tentang.html">Tentang Kami</a></li>
-        <li><a href="layanan.html">Layanan</a></li>
-        <li><a href="paket.html" class="active">Paket</a></li>
-        <li><a href="coverage.html">Coverage</a></li>
-        <li><a href="kontak.html">Kontak</a></li>
-    </ul>
+    <div class="nav-container">
+        <a href="index.html" class="nav-logo">      
+            <img src="wifi.png" alt="Firanet Logo" class="logo-img">
+            <span>fira<span class="net-text">net</span></span>
+        </a>
 
-    <div class="nav-right-actions">
-        <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
-            <i class="fa-solid fa-bars"></i>
-        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Beranda</a></li>
+            <li><a href="tentang.html">Tentang Kami</a></li>
+            <li><a href="layanan.html">Layanan</a></li>
+            <li><a href="paket.html" class="active">Paket</a></li>
+            <li><a href="coverage.html">Coverage</a></li>
+            <li><a href="kontak.html">Kontak</a></li>
+        </ul>
+        
+        <div class="nav-actions">
+            <a href="https://wa.me/6281290473752" target="_blank" class="nav-btn">Hubungi Kami</a>
+            <button class="menu-toggle" id="menuToggle" aria-label="Buka Menu">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </div>
 </nav>
 
@@ -589,10 +640,9 @@
 
         </div>
     </div>
-    
-    <!-- Petunjuk Geser / Swipe Hint -->
     <div class="scroll-hint">
-        <i class="fa-solid fa-left-right"></i> Geser horizontal untuk melihat paket lainnya
+        <span>Geser untuk melihat lebih banyak paket</span>
+        <i class="fa-solid fa-arrow-right"></i>
     </div>
 </section>
 
@@ -601,24 +651,35 @@
     <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
 </footer>
 
-<!-- JavaScript pendukung fungsi otomatisasi & Menu Mobile -->
+<!-- Script Menu Dropdown Mobile -->
 <script>
     // Menyimpan data paket pilihan untuk form pendaftaran
     function setPaketPilihan(namaPaket) {
         localStorage.setItem('paketTerpilih', namaPaket);
     }
 
-    // Mengaktifkan fungsionalitas tombol menu hamburger pada resolusi mobile
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
+    const toggleIcon = menuToggle.querySelector('i');
 
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         navLinks.classList.toggle('active');
-        const icon = menuToggle.querySelector('i');
-        if (navLinks.classList.contains('active')) {
-            icon.className = 'fa-solid fa-xmark';
+        
+        if(navLinks.classList.contains('active')) {
+            toggleIcon.classList.remove('fa-bars');
+            toggleIcon.classList.add('fa-xmark');
         } else {
-            icon.className = 'fa-solid fa-bars';
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
+        }
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
+            navLinks.classList.remove('active');
+            toggleIcon.classList.remove('fa-xmark');
+            toggleIcon.classList.add('fa-bars');
         }
     });
 </script>
