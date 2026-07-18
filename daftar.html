@@ -329,19 +329,18 @@
         
       
   
-          const pesan = `Halo Firanet, saya ingin mendaftar pasang baru. Berikut data diri saya:
+const pesan = `Halo Firanet, saya ingin mendaftar pasang baru. Berikut data diri saya:
 
-        \'\'\'
-        • Nama      : ${nama}
-        • NIK       : ${nik}
-        • No. WA    : ${hp}
-        • Email     : ${email}
-        • Paket     : ${paket}
-        • Nama WiFi : ${wifiName}
-        • Password  : ${wifiPass}
-        \'\'\'
-
-*• Alamat Pasang :* ${alamat}
+\`\`\`
+• Nama           : ${nama}
+• NIK            : ${nik}
+• No. WA         : ${hp}
+• Email          : ${email}
+• Paket          : ${paket}
+• Nama WiFi      : ${wifiName}
+• Password       : ${wifiPass}
+• Alamat Pasang  : ${alamat}
+\`\`\`
 
 Mohon segera diproses untuk pengecekan di lokasi saya, terima kasih.`;
         const urlWhatsApp = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
