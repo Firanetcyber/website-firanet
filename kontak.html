@@ -620,16 +620,17 @@
         // Tentukan nomor WhatsApp penerima (admin Firanet)
         const phoneNumber = "6281290473752"; 
 
-        // Susun struktur chat WhatsApp
-        // Susun struktur chat WhatsApp (Titik dua disejajarkan dengan spasi manual)
-            const textMessage = `Halo Firanet, saya ingin mengirim pesan dari website:\n\n` +
-                                `• Nama      : ${name}\n` +
-                                `• Email     : ${email}\n` +
-                                `• Perihal   : ${subject}\n\n` +
-                                `• Pesan     :\n${message}`;
+        // Susun struktur chat WhatsApp dengan format Monospace (diapit tiga backtick ```)
+const textMessage = "Halo Firanet, saya ingin mengirim pesan dari website:\n\n" +
+                    "```" +
+                    `Nama   : ${name}\n` +
+                    `Email  : ${email}\n` +
+                    `Subjek : ${subject}\n\n` +
+                    `Pesan  :\n${message}` +
+                    "```";
 
-        // Format teks agar aman di dalam link URL browser
-        const encodedText = encodeURIComponent(textMessage);
+// Format teks agar aman di dalam link URL browser
+const encodedText = encodeURIComponent(textMessage);
 
         // Buka chat WhatsApp di tab baru
         window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
