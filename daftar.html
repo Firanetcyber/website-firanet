@@ -327,36 +327,23 @@
 
         const nomorAdmin = "6281290473752"; 
         
-        // Menggunakan format vertikal (ke bawah) agar alamat sepanjang apapun 
-        // tidak membuat format chat berantakan atau tidak sejajar di WhatsApp
-        const pesan = `Halo Firanet, saya ingin mendaftar pasang baru. Berikut data diri saya:
+      
+  
+          const pesan = `Halo Firanet, saya ingin mendaftar pasang baru. Berikut data diri saya:
 
-*• Nama:*
-${nama}
+        \'\'\'
+        • Nama      : ${nama}
+        • NIK       : ${nik}
+        • No. WA    : ${hp}
+        • Email     : ${email}
+        • Paket     : ${paket}
+        • Nama WiFi : ${wifiName}
+        • Password  : ${wifiPass}
+        \'\'\'
 
-*• NIK:*
-${nik}
-
-*• No. WA:*
-${hp}
-
-*• Email:*
-${email}
-
-*• Paket Pilihan:*
-${paket}
-
-*• Request Nama WiFi:*
-${wifiName}
-
-*• Request Password WiFi:*
-${wifiPass}
-
-*• Alamat Pasang:*
-${alamat}
+*• Alamat Pasang :* ${alamat}
 
 Mohon segera diproses untuk pengecekan di lokasi saya, terima kasih.`;
-
         const urlWhatsApp = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
         window.open(urlWhatsApp, '_blank');
     }
