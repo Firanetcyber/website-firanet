@@ -7,12 +7,10 @@
 
     <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
     
-    
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
-        
         * {
             margin: 0;
             padding: 0;
@@ -55,7 +53,6 @@
             -webkit-text-size-adjust: 100%;
         }
 
-        
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -165,7 +162,6 @@
             box-shadow: 0 4px 12px rgba(0, 79, 196, 0.2);
         }
 
-        
         .menu-toggle {
             display: none;
             background: none;
@@ -177,7 +173,6 @@
             z-index: 101;
         }
 
-        
         .page-header {
             text-align: center;
             padding: 40px 20px 10px;
@@ -198,7 +193,6 @@
             color: var(--text-muted);
         }
 
-        
         .pricing-section {
             max-width: 1400px;
             width: 100%;
@@ -353,7 +347,6 @@
             background: var(--orange-hover);
         }
 
-        
         .scroll-hint {
             display: flex;
             justify-content: center;
@@ -375,7 +368,6 @@
             100% { transform: scale(1); opacity: 0.5; }
         }
 
-        
         footer {
             text-align: center;
             color: var(--text-muted);
@@ -387,12 +379,10 @@
             margin-top: auto;
         }
 
-        
         @media (max-width: 1024px) {
             .pricing-section { padding: 10px 5px 40px; }
         }
 
-        
         @media (max-width: 768px) {
             body {
                 background-attachment: scroll;
@@ -401,7 +391,6 @@
             .menu-toggle { 
                 display: block; 
             }
-
 
             .nav-links {
                 display: none; 
@@ -455,7 +444,6 @@
             .nav-btn { display: none; } 
         }
 
-
         @media (min-width: 1200px) {
             .pricing-grid {
                 justify-content: flex-start; 
@@ -500,7 +488,6 @@
     </div>
 </nav>
 
-
 <div class="page-header">
     <h1>Pilih Paket Internetmu</h1>
     <p>Koneksi internet rumah 100% Fiber Optic, True Unlimited tanpa batasan FUP, dan stabil untuk semua perangkat keluarga Anda.</p>
@@ -511,7 +498,29 @@
     <div class="pricing-container">
         <div class="pricing-grid">
             
-           
+            <!-- Paket Basic (10 Mbps) -->
+            <div class="price-card">
+                <div class="area-badge" style="background: #e11d48; color: white; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 10px;">
+                    <i class="fa-solid fa-location-dot"></i> Khusus Cinere & Sekitarnya
+                </div>
+                <div class="card-header">
+                    <h3>Basic</h3>
+                    <div class="speed">10 <span>Mbps</span></div>
+                </div>
+                <div class="price-box">
+                    <div class="amount">Rp135.000<span>/Bulan</span></div>
+                </div>
+                <ul class="features-list">
+                    <li><i class="fa-solid fa-circle-check"></i> Kecepatan s.d 10 Mbps</li>
+                    <li><i class="fa-solid fa-circle-check"></i> True Unlimited (Tanpa FUP)</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-2 Perangkat</li>
+                    <li><i class="fa-solid fa-circle-check"></i> <strong>Eksklusif Area Cinere & Sekitarnya</strong></li>
+                    <li><i class="fa-solid fa-circle-check"></i> Super Hemat & Terjangkau</li>
+                </ul>
+                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Basic 10 Mbps - Rp135.000 (Khusus Cinere)')">Pilih Paket</a>
+            </div>
+
+            <!-- Paket Bronze (20 Mbps) -->
             <div class="price-card">
                 <div class="card-header">
                     <h3>Bronze</h3>
@@ -529,6 +538,7 @@
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Bronze 20 Mbps - Rp166.500')">Pilih Paket</a>
             </div>
 
+            <!-- Paket Iron (30 Mbps) -->
             <div class="price-card">
                 <div class="card-header">
                     <h3>Iron</h3>
@@ -546,7 +556,7 @@
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Iron 30 Mbps - Rp169.000')">Pilih Paket</a>
             </div>
             
-           
+            <!-- Paket Silver (50 Mbps) -->
             <div class="price-card">
                 <div class="card-header">
                     <h3>Silver</h3>
@@ -564,7 +574,7 @@
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Silver 50 Mbps - Rp175.000')">Pilih Paket</a>
             </div>
 
-            
+            <!-- Paket Gold (75 Mbps) -->
             <div class="price-card popular">
                 <div class="popular-badge">Populer</div>
                 <div class="card-header">
@@ -583,7 +593,7 @@
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Gold 75 Mbps - Rp185.000')">Pilih Paket</a>
             </div>
 
-         
+            <!-- Paket Platinum (100 Mbps) -->
             <div class="price-card">
                 <div class="card-header">
                     <h3>Platinum</h3>
@@ -601,32 +611,14 @@
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Platinum 100 Mbps - Rp215.000')">Pilih Paket</a>
             </div>
 
-       
-            <div class="price-card">
-                <div class="card-header">
-                    <h3>Diamond</h3>
-                    <div class="speed">150 <span>Mbps</span></div>
-                </div>
-                <div class="price-box">
-                    <div class="amount">Rp285.000<span>/Bulan</span></div>
-                </div>
-                <ul class="features-list">
-                    <li><i class="fa-solid fa-circle-check"></i> Kecepatan s.d 150 Mbps</li>
-                    <li><i class="fa-solid fa-circle-check"></i> True Unlimited (Tanpa FUP)</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-12 Perangkat</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Bandwidth Ekstra Luas</li>
-                </ul>
-                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Diamond 150 Mbps - Rp285.000')">Pilih Paket</a>
-            </div>
-
-          
+            <!-- Paket Business (200 Mbps) -->
             <div class="price-card">
                 <div class="card-header">
                     <h3>Business</h3>
                     <div class="speed">200 <span>Mbps</span></div>
                 </div>
                 <div class="price-box">
-                    <div class="amount">Rp350.000<span>/Bulan</span></div>
+                    <div class="amount">Rp275.000<span>/Bulan</span></div>
                 </div>
                 <ul class="features-list">
                     <li><i class="fa-solid fa-circle-check"></i> Kecepatan s.d 200 Mbps</li>
@@ -650,9 +642,7 @@
     <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
 </footer>
 
-
 <script>
- 
     function setPaketPilihan(namaPaket) {
         localStorage.setItem('paketTerpilih', namaPaket);
     }
