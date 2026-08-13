@@ -76,7 +76,7 @@
             width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            position: relative; /* Acuan posisi drop-down menu mobile */
+            position: relative;
         }
 
         .nav-logo {
@@ -163,7 +163,7 @@
             box-shadow: 0 4px 12px rgba(0, 79, 196, 0.2);
         }
 
-        /* Menu Toggle Button (Tersembunyi di Desktop) */
+        /* Menu Toggle Button */
         .menu-toggle {
             display: none;
             background: none;
@@ -380,17 +380,10 @@
             .page-header h1 { font-size: 32px; }
         }
 
-        /* TAMPILAN MOBILE DROPDOWN (Sinkron dengan Halaman Layanan) */
         @media (max-width: 768px) {
-            body {
-                background-attachment: scroll;
-            }
+            body { background-attachment: scroll; }
+            .menu-toggle { display: block; }
 
-            .menu-toggle { 
-                display: block; 
-            }
-
-            /* Sistem Drop-down Menu */
             .nav-links {
                 display: none; 
                 position: absolute;
@@ -407,9 +400,7 @@
                 border-radius: 0 0 12px 12px;
             }
 
-            .nav-links.active {
-                display: flex; 
-            }
+            .nav-links.active { display: flex; }
 
             .nav-links a {
                 font-size: 16px;
@@ -419,24 +410,15 @@
                 border-radius: 8px;
             }
 
-            .nav-links a.active {
-                background-color: #fff7ed;
-            }
-
-            .nav-links a.active::after {
-                display: none; 
-            }
-
-            .nav-links a:hover {
-                background-color: #f8fafc;
-            }
+            .nav-links a.active { background-color: #fff7ed; }
+            .nav-links a.active::after { display: none; }
+            .nav-links a:hover { background-color: #f8fafc; }
 
             .navbar { padding: 10px 16px; }
             .nav-logo { font-size: 20px; }
             .logo-img { height: 20px; }
             .nav-btn { padding: 8px 16px; font-size: 13px; }
             
-            /* Penyesuaian Konten Grid & Teks di HP */
             .page-header { margin-bottom: 25px; }
             .page-header h1 { font-size: 26px; letter-spacing: -0.5px; }
             .page-header p { font-size: 14px; }
@@ -449,7 +431,7 @@
 
         @media (max-width: 480px) {
             .page-header h1 { font-size: 22px; }
-            .nav-btn { display: none; } /* Menyembunyikan tombol kontak di navbar HP kecil agar space aman */
+            .nav-btn { display: none; }
         }
     </style>
 </head>
@@ -494,14 +476,15 @@
             <h2>Cek Lokasi Rumahmu</h2>
             <p>Isi formulir singkat di bawah ini, tim kami akan segera melakukan verifikasi jaringan ke alamat Anda.</p>
             
-            <form action="#" method="POST">
+            <!-- Ditambahkan ID pada Form untuk dihandle JS -->
+            <form id="coverageForm">
                 <div class="form-group">
                     <label for="nama">Nama Lengkap</label>
                     <input type="text" id="nama" name="nama" placeholder="Contoh: Budi Santoso" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="whatsapp">Nomor WhatsApp</label>
+                    <label for="whatsapp">Nomor WhatsApp Anda</label>
                     <input type="tel" id="whatsapp" name="whatsapp" placeholder="Contoh: 0812345678xx" required>
                 </div>
 
@@ -516,7 +499,7 @@
                 </div>
 
                 <button type="submit" class="btn-check">
-                    <i class="fa-solid fa-location-dot"></i> Kirim & Cek Sekarang
+                    <i class="fa-solid fa-paper-plane"></i> Kirim Via WhatsApp
                 </button>
             </form>
 
@@ -556,8 +539,9 @@
     <p>© 2026 FIRANET - Koneksi Premium Tanpa Batas Kuota. Green Citayam City, Jawa Barat.</p>
 </footer>
 
-<!-- Script Menu Dropdown Mobile -->
+<!-- Script Menu Dropdown Mobile & Pengiriman WhatsApp -->
 <script>
+    // Menu Mobile Toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
     const toggleIcon = menuToggle.querySelector('i');
@@ -581,6 +565,32 @@
             toggleIcon.classList.remove('fa-xmark');
             toggleIcon.classList.add('fa-bars');
         }
+    });
+
+    // Pengiriman Formulir ke WhatsApp
+    document.getElementById('coverageForm').addEventListener('submit', function(e) {
+        e.preventDefault(); // Mencegah reload halaman
+        
+        // Ambil nilai dari input
+        const nama = document.getElementById('nama').value;
+        const whatsapp = document.getElementById('whatsapp').value;
+        const cluster = document.getElementById('cluster').value;
+        const alamat = document.getElementById('detail-alamat').value;
+        
+        // Nomor WhatsApp Tujuan FIRANET
+        const adminWA = "6281290473752"; 
+
+        // Buat Format Pesan WhatsApp
+        const pesan = `Halo Admin FIRANET, saya ingin mengecek ketersediaan / pengajuan jaringan internet di lokasi saya.%0A%0A` +
+                      `*-- DATA PENGECEKAN LOKASI --*%0A` +
+                      `*Nama Lengkap:* ${encodeURIComponent(nama)}%0A` +
+                      `*No. WhatsApp:* ${encodeURIComponent(whatsapp)}%0A` +
+                      `*Perumahan/Cluster:* ${encodeURIComponent(cluster)}%0A` +
+                      `*Detail Alamat:* ${encodeURIComponent(alamat)}%0A%0A` +
+                      `Mohon informasinya apakah jaringan FIRANET sudah tersedia di lokasi tersebut. Terima kasih!`;
+
+        // Redirect ke WhatsApp Web / Aplikasi
+        window.open(`https://wa.me/${adminWA}?text=${pesan}`, '_blank');
     });
 </script>
 
