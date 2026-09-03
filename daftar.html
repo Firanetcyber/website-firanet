@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pendaftaran FIRANET</title>
 
-     <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="icon1.png" type="image/x-icon" />
 
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts untuk Font Modern -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
     
@@ -271,6 +271,7 @@
                     <label for="paket">Pilihan Paket Internet</label>
                     <select id="paket" required>
                         <option value="" disabled selected>Pilih Paket Yang Anda Inginkan</option>
+                        <option value="Basic Plus 15 Mbps - Rp150.000">Basic Plus (15 Mbps) - Rp150.000/Bulan</option>
                         <option value="Bronze 20 Mbps - Rp166.500">Bronze (20 Mbps) - Rp166.500/Bulan</option>
                         <option value="Iron 30 Mbps - Rp169.000">Iron (30 Mbps) - Rp169.000/Bulan</option>
                         <option value="Silver 50 Mbps - Rp175.000">Silver (50 Mbps) - Rp175.000/Bulan</option>
@@ -313,6 +314,22 @@
 </footer>
 
 <script>
+    // Otomatis memilih paket jika pengguna datang dari halaman paket.html
+    window.addEventListener('DOMContentLoaded', () => {
+        const paketTerpilih = localStorage.getItem('paketTerpilih');
+        if (paketTerpilih) {
+            const selectPaket = document.getElementById('paket');
+            for (let option of selectPaket.options) {
+                if (option.value.toLowerCase().includes(paketTerpilih.toLowerCase()) || 
+                    paketTerpilih.toLowerCase().includes(option.value.toLowerCase())) {
+                    option.selected = true;
+                    break;
+                }
+            }
+            localStorage.removeItem('paketTerpilih');
+        }
+    });
+
     function kirimKeWhatsapp(event) {
         event.preventDefault();
 
@@ -327,9 +344,7 @@
 
         const nomorAdmin = "6281290473752"; 
         
-      
-  
-const pesan = `Halo Firanet, saya ingin mendaftar pasang baru. Berikut data diri saya:
+        const pesan = `Halo Firanet, saya ingin mendaftar pasang baru. Berikut data diri saya:
 
 \`\`\`
 • Nama           : ${nama}
@@ -343,6 +358,7 @@ const pesan = `Halo Firanet, saya ingin mendaftar pasang baru. Berikut data diri
 \`\`\`
 
 Mohon segera diproses untuk pengecekan di lokasi saya, terima kasih.`;
+
         const urlWhatsApp = `https://wa.me/${nomorAdmin}?text=${encodeURIComponent(pesan)}`;
         window.open(urlWhatsApp, '_blank');
     }

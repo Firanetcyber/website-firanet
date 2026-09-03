@@ -257,6 +257,29 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        /* Styling Badge Lokasi Khusus Cinere */
+        .area-badge {
+            position: absolute;
+            top: -14px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2563eb;
+            color: white;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .area-info {
+            color: #2563eb !important;
+            font-weight: 700 !important;
         }
 
         .card-header h3 {
@@ -498,26 +521,24 @@
     <div class="pricing-container">
         <div class="pricing-grid">
             
-            <!-- Paket Basic (10 Mbps) -->
+            <!-- Paket Basic (10 Mbps) - Khusus Cinere -->
             <div class="price-card">
-                <div class="area-badge" style="background: #e11d48; color: white; padding: 4px 12px; border-radius: 12px; font-size: 11px; font-weight: 700; display: inline-block; margin-bottom: 10px;">
-                    <i class="fa-solid fa-location-dot"></i> Khusus Cinere & Sekitarnya
-                </div>
+                
                 <div class="card-header">
                     <h3>Basic</h3>
-                    <div class="speed">10 <span>Mbps</span></div>
+                    <div class="speed">15 <span>Mbps</span></div>
                 </div>
                 <div class="price-box">
-                    <div class="amount">Rp135.000<span>/Bulan</span></div>
+                    <div class="amount">Rp150.000<span>/Bulan</span></div>
                 </div>
                 <ul class="features-list">
-                    <li><i class="fa-solid fa-circle-check"></i> Kecepatan s.d 10 Mbps</li>
+                    <li class="area-info"><i class="fa-solid fa-location-dot" style="color: #2563eb;"></i> Area Cinere & Sejumlah Titik Terbatas</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Kecepatan s.d 15 Mbps</li>
                     <li><i class="fa-solid fa-circle-check"></i> True Unlimited (Tanpa FUP)</li>
                     <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-2 Perangkat</li>
-                    <li><i class="fa-solid fa-circle-check"></i> <strong>Eksklusif Area Cinere & Sekitarnya</strong></li>
                     <li><i class="fa-solid fa-circle-check"></i> Super Hemat & Terjangkau</li>
                 </ul>
-                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Basic 10 Mbps - Rp135.000 (Khusus Cinere)')">Pilih Paket</a>
+                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Basic 15 Mbps (Cinere) - Rp150.000')">Pilih Paket</a>
             </div>
 
             <!-- Paket Bronze (20 Mbps) -->
@@ -532,7 +553,7 @@
                 <ul class="features-list">
                     <li><i class="fa-solid fa-circle-check"></i> Kecepatan s.d 20 Mbps</li>
                     <li><i class="fa-solid fa-circle-check"></i> True Unlimited (Tanpa FUP)</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-2 Perangkat</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-3 Perangkat</li>
                     <li><i class="fa-solid fa-circle-check"></i> Hemat & Ekonomis</li>
                 </ul>
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Bronze 20 Mbps - Rp166.500')">Pilih Paket</a>
@@ -550,7 +571,7 @@
                 <ul class="features-list">
                     <li><i class="fa-solid fa-circle-check"></i> Kecepatan s.d 30 Mbps</li>
                     <li><i class="fa-solid fa-circle-check"></i> True Unlimited (Tanpa FUP)</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-3 Perangkat</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-4 Perangkat</li>
                     <li><i class="fa-solid fa-circle-check"></i> Stabil & Terjangkau</li>
                 </ul>
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Iron 30 Mbps - Rp169.000')">Pilih Paket</a>
@@ -568,7 +589,7 @@
                 <ul class="features-list">
                     <li><i class="fa-solid fa-circle-check"></i> Kecepatan s.d 50 Mbps</li>
                     <li><i class="fa-solid fa-circle-check"></i> True Unlimited (Tanpa FUP)</li>
-                    <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-4 Perangkat</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Cocok untuk 1-5 Perangkat</li>
                     <li><i class="fa-solid fa-circle-check"></i> Download & Upload Stabil</li>
                 </ul>
                 <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Silver 50 Mbps - Rp175.000')">Pilih Paket</a>
@@ -626,7 +647,7 @@
                     <li><i class="fa-solid fa-circle-check"></i> Perangkat 15+ (Kantor/Kafe)</li>
                     <li><i class="fa-solid fa-circle-check"></i> 1:1 Symmetrical Speed</li>
                 </ul>
-                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Business 200 Mbps - Rp350.000')">Pilih Paket</a>
+                <a href="daftar.html" class="btn-select" onclick="setPaketPilihan('Business 200 Mbps - Rp275.000')">Pilih Paket</a>
             </div>
 
         </div>
